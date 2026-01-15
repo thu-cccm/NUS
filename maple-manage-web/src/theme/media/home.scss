@@ -1,0 +1,19 @@
+@import './index.scss';
+
+@media screen and (max-width: $sm) {
+	.home-media,
+	.home-media-sm {
+		margin-top: 15px;
+	}
+}
+
+@media screen and (max-width: $lg) {
+	.home-media-lg {
+		margin-top: 15px;
+	}
+	.home-monitor {
+		.flex-warp-item {
+			width: 33.33% !important;
+		}
+	}
+}

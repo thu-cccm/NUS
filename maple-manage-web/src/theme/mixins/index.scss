@@ -1,0 +1,45 @@
+@mixin generalIcon {
+	font-size: 14px !important;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 5px;
+	width: 24px;
+	text-align: center;
+	justify-content: center;
+}
+
+@mixin text-no-wrap() {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+@mixin text-ellipsis($line: 2) {
+	overflow: hidden;
+	word-break: break-all;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: $line;
+	-webkit-box-orient: vertical;
+}
+
+@mixin scrollBar {
+
+	&::-webkit-scrollbar-track-piece {
+		background-color: #f8f8f8;
+	}
+
+	&::-webkit-scrollbar {
+		width: 9px;
+		height: 9px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: #dddddd;
+		background-clip: padding-box;
+		min-height: 28px;
+	}
+	&::-webkit-scrollbar-thumb:hover {
+		background-color: #bbb;
+	}
+}

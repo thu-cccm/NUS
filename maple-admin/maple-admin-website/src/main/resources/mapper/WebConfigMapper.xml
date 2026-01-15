@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maple.website.mapper.WebConfigMapper">
+
+    <sql id="selectWebConfigVo">
+        select id, config_name, config_key, config_value, is_system, create_id, create_time, update_id, update_time, remark from web_config
+    </sql>
+    <select id="getPageList" resultType="com.maple.website.vo.model.WebConfigModel">
+        <include refid="selectWebConfigVo"/>
+        <where>
+            <if test="webConfig.configName != null and webConfig.configName != ''">
+                and config_name like concat('%', #{webConfig.configName}, '%')
+            </if>
+            <if test="webConfig.configKey != null and webConfig.configKey != ''">
+                and config_key = #{webConfig.configKey}
+            </if>
+            <if test="webConfig.isSystem != null">
+                and is_system = #{webConfig.isSystem}
+            </if>
+        </where>
+        order by id desc
+    </select>
+</mapper>

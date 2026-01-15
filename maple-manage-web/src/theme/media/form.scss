@@ -1,0 +1,29 @@
+@import './index.scss';
+
+@media screen and (max-width: $xs) {
+	.el-form-item__label {
+		width: 100% !important;
+		text-align: left !important;
+
+		justify-content: flex-start !important;
+	}
+	.el-form-item__content {
+		margin-left: 0 !important;
+	}
+	.el-form-item {
+
+		display: unset !important;
+	}
+
+	.table-form-btn {
+		display: flex !important;
+		.el-form-item__label {
+			width: auto !important;
+		}
+	}
+
+	.table-search-container {
+		max-height: 160px;
+		overflow: auto;
+	}
+}

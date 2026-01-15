@@ -1,0 +1,8 @@
+@import './index.scss';
+
+@media screen and (max-width: $xs) {
+	.el-cascader__dropdown.el-popper {
+		overflow: auto;
+		max-width: 100%;
+	}
+}

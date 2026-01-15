@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maple.website.mapper.WebUserOperationMapper">
+    
+    <select id="getPageList" resultType="com.maple.website.vo.model.WebUserOperationModel">
+        select t1.*,
+               t2.nick_name,
+               t3.title as dataName
+               from web_user_operation t1 
+            left join web_user t2 on t1.user_id = t2.id 
+            left join web_article t3 on t1.data_id = t3.id
+        <where>
+            <if test="webUserOperation.dataType != null"> 
+                and data_type = #{webUserOperation.dataType}
+            </if>
+            <if test="webUserOperation.dataId != null"> 
+                and data_id = #{webUserOperation.dataId}
+            </if>
+            <if test="webUserOperation.userId != null"> 
+                and user_id = #{webUserOperation.userId}
+            </if>
+            <if test="webUserOperation.isRead != null"> 
+                and is_read = #{webUserOperation.isRead}
+            </if>
+            <if test="webUserOperation.isLike != null"> 
+                and is_like = #{webUserOperation.isLike}
+            </if>
+            <if test="webUserOperation.isCollect != null"> 
+                and is_collect = #{webUserOperation.isCollect}
+            </if>
+        </where>
+        order by id desc
+    </select>
+</mapper>

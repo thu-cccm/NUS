@@ -1,0 +1,54 @@
+package com.maple.website.service.impl;
+
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.maple.common.util.TransformUtils;
+import com.maple.website.bean.WebConfig;
+import com.maple.website.mapper.WebConfigMapper;
+import com.maple.website.service.IWebConfigService;
+import com.maple.website.vo.model.WebConfigModel;
+import com.maple.website.vo.query.WebConfigPageQuery;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+@AllArgsConstructor
+public class WebConfigServiceImpl extends ServiceImpl<WebConfigMapper, WebConfig> implements IWebConfigService {
+
+    private final WebConfigMapper webConfigMapper;
+
+    @Override
+    public IPage<WebConfigModel> getPageList(WebConfigPageQuery query) {
+        return webConfigMapper.getPageList(query.getPage(), query.getQuery());
+    }
+
+    @Override
+    public List<WebConfigModel> getAllConfigList() {
+        return TransformUtils.mapList(webConfigMapper.selectList(null), WebConfigModel.class);
+    }
+
+    @Override
+    public WebConfigModel getWebConfigById(Long id) {
+        return TransformUtils.map(webConfigMapper.selectById(id), WebConfigModel.class);
+    }
+
+    @Override
+    public Long createWebConfig(WebConfigModel model) {
+        WebConfig webConfig = TransformUtils.map(model, WebConfig.class);
+        webConfigMapper.insert(webConfig);
+        return webConfig.getId();
+    }
+
+    @Override
+    public void updateWebConfig(WebConfigModel model) {
+        webConfigMapper.updateById(TransformUtils.map(model, WebConfig.class));
+    }
+
+    @Override
+    public Integer deleteWebConfig(Long id) {
+        return webConfigMapper.deleteById(id);
+    }
+
+}

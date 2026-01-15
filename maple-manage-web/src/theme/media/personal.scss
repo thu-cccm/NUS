@@ -1,0 +1,14 @@
+@import './index.scss';
+
+@media screen and (max-width: $sm) {
+	.personal-info {
+		padding-left: 0 !important;
+		margin-top: 15px;
+	}
+	.personal-recommend-col {
+		margin-bottom: 15px;
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}

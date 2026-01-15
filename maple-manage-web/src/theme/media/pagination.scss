@@ -1,0 +1,13 @@
+@import './index.scss';
+
+@media screen and (max-width: $xs) {
+	.el-pager,
+	.el-pagination__jump {
+		display: none !important;
+	}
+
+	.el-pagination,
+	.table-footer {
+		justify-content: center !important;
+	}
+}
