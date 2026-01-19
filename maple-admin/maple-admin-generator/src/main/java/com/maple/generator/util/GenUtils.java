@@ -140,7 +140,7 @@ public class GenUtils {
     }
 
     public static String replaceText(String text) {
-        return RegExUtils.replaceAll(text, "(?:表|笑小枫)", "");
+        return RegExUtils.replaceAll(text, "(?:表|tian)", "");
     }
 
     public static String getDbType(String columnType) {

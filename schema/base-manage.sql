@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `sys_config` (
     ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统管理-参数配置表';
 
 INSERT INTO `sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`, `belong_dept_id`, `create_id`, `create_time`, `update_id`, `update_time`, `remark`) VALUES
-(1, '笑小枫', 'xiaoxiaofeng', 'www.xiaoxiaofeng.com', 0, NULL, 1, '2024-04-29 10:54:42', 1, '2024-04-29 11:00:00', '笑小枫的官方网站');
+(1, '系统门户', 'portal_url', 'http://localhost:8080', 0, NULL, 1, '2024-04-29 10:54:42', 1, '2024-04-29 11:00:00', '新农村建设信息管理系统门户地址');
 
 CREATE TABLE IF NOT EXISTS `sys_dict_data` (
     `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '字典编码',
@@ -206,8 +206,8 @@ CREATE TABLE IF NOT EXISTS `usc_dept` (
     ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户中心-部门表';
 
 INSERT INTO `usc_dept` (`id`, `parent_id`, `ancestors`, `dept_name`, `sort_num`, `leader`, `phone`, `email`, `status`, `create_id`, `create_time`, `update_id`, `update_time`, `is_delete`) VALUES
-(1, 0, '', '笑小枫', 0, '笑小枫', '18300000000', '1150640979@qq.com', 1, NULL, '2024-03-25 16:47:02', NULL, '2024-03-25 16:47:02', 0),
-(2, 1, '1', '管理部门', 1, '张三', '18888888888', NULL, 1, 1, '2024-04-11 11:06:16', 1, '2024-04-11 11:07:10', 0);
+(1, 0, '', '新农村信息中心', 0, '李主任', '18300000000', 'service@village.local', 1, NULL, '2024-03-25 16:47:02', NULL, '2024-03-25 16:47:02', 0),
+(2, 1, '1', '村委会', 1, '张书记', '18888888888', NULL, 1, 1, '2024-04-11 11:06:16', 1, '2024-04-11 11:07:10', 0);
 
 CREATE TABLE IF NOT EXISTS `usc_menu` (
     `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '菜单ID',
@@ -235,20 +235,27 @@ CREATE TABLE IF NOT EXISTS `usc_menu` (
     `update_id` bigint(20) DEFAULT NULL COMMENT '修改人id',
     `update_time` datetime DEFAULT NULL COMMENT '更新时间',
     PRIMARY KEY (`id`) USING BTREE
-    ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户中心-菜单权限表';
+    ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户中心-菜单权限表';
 
 INSERT INTO `usc_menu` (`id`, `name`, `title`, `menu_type`, `parent_id`, `ancestors`, `sort_num`, `path`, `component`, `redirect`, `link_url`, `is_iframe`, `is_link`, `is_keep_alive`, `is_hide`, `is_affix`, `status`, `perms`, `icon`, `remark`, `create_id`, `create_time`, `update_id`, `update_time`) VALUES
 (1, 'home', '首页', 'C', 0, '', 1, '/home', 'home/index', '/home', '', 0, 0, 1, 0, 1, 1, '', 'iconfont icon-shouye', '', 1, '2024-03-28 11:09:37', 1, '2024-03-28 13:04:26'),
-(2, 'system', '系统设置', 'M', 0, '', 2, '/system', 'system/user/index', '/system/user', '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-xitongshezhi', '', 1, '2024-03-28 13:06:21', 1, '2024-04-29 09:44:53'),
+(2, 'system', '系统设置', 'M', 0, '', 3, '/system', 'system/user/index', '/system/user', '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-xitongshezhi', '', 1, '2024-03-28 13:06:21', 1, '2024-04-29 09:44:53'),
 (3, 'systemUser', '用户管理', 'C', 2, '2', 1, '/system/user', 'system/user/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-icon-', '', 1, '2024-03-28 13:19:11', 1, '2024-03-28 13:21:01'),
 (4, 'systemRole', '角色管理', 'C', 2, '2', 2, '/system/role', 'system/role/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-shuxingtu', '', 1, '2024-03-28 15:11:42', 1, '2024-03-28 15:13:00'),
 (5, 'systemMenu', '菜单管理', 'C', 2, '2', 3, '/system/menu', 'system/menu/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-juxingkaobei', '', 1, '2024-03-28 15:11:42', 1, '2024-03-28 15:21:57'),
 (6, 'systemDept', '部门管理', 'C', 2, '2', 4, '/system/dept', 'system/dept/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'ele-OfficeBuilding', '', 1, '2024-03-28 15:11:42', 1, '2024-03-28 15:13:00'),
 (7, 'systemDic', '字典管理', 'C', 2, '2', 5, '/system/dic', 'system/dic/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'ele-SetUp', '', 1, '2024-03-28 15:11:42', 1, '2024-03-28 15:13:00'),
-(8, 'tool', '生成工具', 'M', 0, '', 3, '/tool', 'tool/gen/index', '/tool/gen', '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-shouye_dongtaihui', '', 1, '2024-03-28 13:06:21', 1, '2024-04-29 09:45:00'),
+(8, 'tool', '生成工具', 'M', 0, '', 4, '/tool', 'tool/gen/index', '/tool/gen', '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-shouye_dongtaihui', '', 1, '2024-03-28 13:06:21', 1, '2024-04-29 09:45:00'),
 (9, 'toolGen', '代码生成', 'C', 8, '8', 1, '/tool/gen', 'tool/gen/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-zujian', '', 1, '2024-03-28 13:19:11', 1, '2024-03-28 16:13:10'),
 (10, 'config', '参数配置', 'C', 2, '2', 6, '/system/config', 'system/config/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-icon-', '', 1, '2024-04-29 10:34:17', 1, '2024-04-29 10:44:24'),
-(11, '', '修改', 'F', 3, '2,3', 0, '', '', '', '', 0, 0, 1, 0, 0, 1, 'system:user:update', '', '', 1, '2024-04-29 14:25:41', 1, '2024-04-29 14:25:41');
+(11, '', '修改', 'F', 3, '2,3', 0, '', '', '', '', 0, 0, 1, 0, 0, 1, 'system:user:update', '', '', 1, '2024-04-29 14:25:41', 1, '2024-04-29 14:25:41'),
+(12, 'vms', '新农村治理', 'M', 0, '', 2, '/vms', 'vms/resident/index', '/vms/resident', '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-shouye', '', 1, '2025-01-01 00:00:00', 1, '2025-01-01 00:00:00'),
+(13, 'vmsResident', '人口档案', 'C', 12, '12', 1, '/vms/resident', 'vms/resident/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'ele-User', '', 1, '2025-01-01 00:00:00', 1, '2025-01-01 00:00:00'),
+(14, 'vmsLand', '土地资源', 'C', 12, '12', 2, '/vms/land', 'vms/land/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'ele-MapLocation', '', 1, '2025-01-01 00:00:00', 1, '2025-01-01 00:00:00'),
+(15, 'vmsAgriculture', '农业生产', 'C', 12, '12', 3, '/vms/agriculture', 'vms/agriculture/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'ele-Food', '', 1, '2025-01-01 00:00:00', 1, '2025-01-01 00:00:00'),
+(16, 'vmsInfrastructure', '基础设施', 'C', 12, '12', 4, '/vms/infrastructure', 'vms/infrastructure/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'ele-OfficeBuilding', '', 1, '2025-01-01 00:00:00', 1, '2025-01-01 00:00:00'),
+(17, 'vmsApply', '事务申请', 'C', 12, '12', 5, '/vms/apply', 'vms/apply/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'ele-Document', '', 1, '2025-01-01 00:00:00', 1, '2025-01-01 00:00:00'),
+(18, 'vmsVote', '民主互动', 'C', 12, '12', 6, '/vms/vote', 'vms/vote/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'ele-ChatLineRound', '', 1, '2025-01-01 00:00:00', 1, '2025-01-01 00:00:00');
 
 CREATE TABLE IF NOT EXISTS `usc_role` (
     `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '角色ID',
@@ -266,11 +273,11 @@ CREATE TABLE IF NOT EXISTS `usc_role` (
     `update_time` datetime DEFAULT NULL COMMENT '更新时间',
     `is_delete` tinyint(1) DEFAULT '0' COMMENT '删除标志',
     PRIMARY KEY (`id`) USING BTREE
-    ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户中心-角色信息表';
+    ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户中心-角色信息表';
 
 INSERT INTO `usc_role` (`id`, `role_name`, `role_key`, `sort_num`, `data_scope`, `menu_check_strictly`, `dept_check_strictly`, `status`, `remark`, `create_id`, `create_time`, `update_id`, `update_time`, `is_delete`) VALUES
-(1, '超级管理员', 'admin', 1, '1', 1, 1, 1, '超级管理员', NULL, '2021-05-17 14:03:57', 1, '2024-04-29 14:25:58', 0),
-(3, '普通用户', 'person', 2, '2', 1, 1, 1, '个人普通用户', 1, '2024-05-06 16:12:53', 2, '2024-05-07 16:44:08', 0);
+(1, '系统管理员', 'admin', 1, '1', 1, 1, 1, '系统管理员', NULL, '2021-05-17 14:03:57', 1, '2025-01-01 00:00:00', 0),
+(2, '村民', 'villager', 2, '5', 1, 1, 1, '村民用户', 1, '2025-01-01 00:00:00', 1, '2025-01-01 00:00:00', 0);
 
 CREATE TABLE IF NOT EXISTS `usc_role_dept` (
     `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
@@ -284,31 +291,35 @@ CREATE TABLE IF NOT EXISTS `usc_role_menu` (
     `role_id` bigint(20) NOT NULL COMMENT '角色ID',
     `menu_id` bigint(20) NOT NULL COMMENT '菜单ID',
     PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户中心-角色和菜单关联表';
+    ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户中心-角色和菜单关联表';
 
 INSERT INTO `usc_role_menu` (`id`, `role_id`, `menu_id`) VALUES
-(20, 1, 1),
-(21, 1, 2),
-(22, 1, 3),
-(23, 1, 11),
-(24, 1, 4),
-(25, 1, 5),
-(26, 1, 6),
-(27, 1, 7),
-(28, 1, 10),
-(29, 1, 8),
-(30, 1, 9),
-(64, 3, 1),
-(65, 3, 2),
-(66, 3, 3),
-(67, 3, 11),
-(68, 3, 4),
-(69, 3, 5),
-(70, 3, 6),
-(71, 3, 7),
-(72, 3, 10),
-(73, 3, 8),
-(74, 3, 9);
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(4, 1, 4),
+(5, 1, 5),
+(6, 1, 6),
+(7, 1, 7),
+(8, 1, 8),
+(9, 1, 9),
+(10, 1, 10),
+(11, 1, 11),
+(12, 1, 12),
+(13, 1, 13),
+(14, 1, 14),
+(15, 1, 15),
+(16, 1, 16),
+(17, 1, 17),
+(18, 1, 18),
+(19, 2, 1),
+(20, 2, 12),
+(21, 2, 13),
+(22, 2, 14),
+(23, 2, 15),
+(24, 2, 16),
+(25, 2, 17),
+(26, 2, 18);
 
 CREATE TABLE IF NOT EXISTS `usc_user` (
     `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
@@ -337,8 +348,8 @@ CREATE TABLE IF NOT EXISTS `usc_user` (
     ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户中心-用户信息表';
 
 INSERT INTO `usc_user` (`id`, `open_id`, `dept_id`, `account`, `user_name`, `nick_name`, `user_type`, `email`, `phone`, `sex`, `avatar`, `salt`, `password`, `status`, `login_ip`, `login_date`, `create_id`, `create_time`, `update_id`, `update_time`, `is_delete`, `remark`) VALUES
-(1, NULL, 2, 'admin', '管理员', '笑小枫', '1', '1150640979@qq.com', '18300000000', '0', 'https://image.xiaoxiaofeng.site/blog/2024/04/12/xxf-20240412102322.png?xxfjava', '439495', '27c3b87192fdaf6c54a0c3de1f339f1d', 1, '127.0.0.1', '2020-10-22 00:00:00', 1, '2020-10-22 14:27:04', 1, '2024-04-11 16:51:27', 0, '管理员'),
-(2, '', 1, 'zhangfuzeng', '笑小枫', '笑小枫', '1', '', '', '0', '', '816295', '89fd444c0e41275bc23082e82875c1ef', 1, '', NULL, 1, '2024-05-06 16:13:39', 1, '2024-05-06 16:13:39', 0, '');
+(1, NULL, 2, 'admin', '管理员', '系统管理员', '1', 'admin@village.local', '18300000000', '0', '', '439495', '27c3b87192fdaf6c54a0c3de1f339f1d', 1, '127.0.0.1', '2020-10-22 00:00:00', 1, '2020-10-22 14:27:04', 1, '2025-01-01 00:00:00', 0, '系统管理员'),
+(2, NULL, 2, 'user001', '村民用户', '村民用户', '1', '', '18100000001', '0', '', '439495', '27c3b87192fdaf6c54a0c3de1f339f1d', 1, '', NULL, 1, '2025-01-01 00:00:00', 1, '2025-01-01 00:00:00', 0, '测试村民账号');
 
 CREATE TABLE IF NOT EXISTS `usc_user_role` (
     `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
@@ -346,8 +357,8 @@ CREATE TABLE IF NOT EXISTS `usc_user_role` (
     `role_id` bigint(20) NOT NULL COMMENT '角色ID',
     PRIMARY KEY (`id`),
     UNIQUE KEY `UNI_USER_ROLE` (`user_id`,`role_id`) USING BTREE
-    ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户中心-用户和角色关联表';
+    ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户中心-用户和角色关联表';
 
 INSERT INTO `usc_user_role` (`id`, `user_id`, `role_id`) VALUES
-(4, 1, 1),
-(5, 2, 3);
+(1, 1, 1),
+(2, 2, 2);

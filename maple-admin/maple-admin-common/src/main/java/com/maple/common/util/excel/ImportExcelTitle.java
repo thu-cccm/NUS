@@ -1,7 +1,6 @@
 package com.maple.common.util.excel;
 
 import com.maple.common.config.MapleMsg;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 
@@ -13,7 +12,6 @@ import java.util.stream.Collectors;
 
 public class ImportExcelTitle {
     @Getter
-    @AllArgsConstructor
     public enum PublicDataImportExcel {
 
         BUSINESS_TYPE("交易类型", "businessType", 0, true),
@@ -39,6 +37,29 @@ public class ImportExcelTitle {
 
         private final Boolean isRequired;
 
+        PublicDataImportExcel(String titleCn, String valueKey, Integer titleLength, Boolean isRequired) {
+            this.titleCn = titleCn;
+            this.valueKey = valueKey;
+            this.titleLength = titleLength;
+            this.isRequired = isRequired;
+        }
+
+        public String getTitleCn() {
+            return titleCn;
+        }
+
+        public String getValueKey() {
+            return valueKey;
+        }
+
+        public Integer getTitleLength() {
+            return titleLength;
+        }
+
+        public Boolean getIsRequired() {
+            return isRequired;
+        }
+
         public static Map<String, String> getKeyValue() {
             return Arrays.stream(PublicDataImportExcel.values()).collect(
                     Collectors.toMap(PublicDataImportExcel::getTitleCn, PublicDataImportExcel::getValueKey));
@@ -55,7 +76,6 @@ public class ImportExcelTitle {
     }
 
     @Getter
-    @AllArgsConstructor
     public enum TaskImportExcel {
 
         PUBLIC_DATA_ID("商机ID", "publicDataId", 0, true),
@@ -70,6 +90,29 @@ public class ImportExcelTitle {
         private final Integer titleLength;
 
         private final Boolean isRequired;
+
+        TaskImportExcel(String titleCn, String valueKey, Integer titleLength, Boolean isRequired) {
+            this.titleCn = titleCn;
+            this.valueKey = valueKey;
+            this.titleLength = titleLength;
+            this.isRequired = isRequired;
+        }
+
+        public String getTitleCn() {
+            return titleCn;
+        }
+
+        public String getValueKey() {
+            return valueKey;
+        }
+
+        public Integer getTitleLength() {
+            return titleLength;
+        }
+
+        public Boolean getIsRequired() {
+            return isRequired;
+        }
 
         public static Map<String, String> getKeyValue() {
             return Arrays.stream(TaskImportExcel.values()).collect(

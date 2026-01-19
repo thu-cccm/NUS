@@ -5,7 +5,7 @@ export function useConfigApi() {
 
     getPageList(data: object) {
       return request({
-        url: '/system/config/getPageList',
+        url: '/manage/system/config/getPageList',
         method: 'post',
         data: data
       })
@@ -13,14 +13,14 @@ export function useConfigApi() {
 
     getConfigById(id: number) {
       return request({
-        url: '/system/config/' + id,
+        url: '/manage/system/config/' + id,
         method: 'get'
       })
     },
 
     createConfig(data: object) {
       return request({
-        url: '/system/config/createConfig',
+        url: '/manage/system/config/createConfig',
         method: 'post',
         data: data
       })
@@ -28,7 +28,7 @@ export function useConfigApi() {
 
     updateConfig(data: object) {
       return request({
-        url: '/system/config/updateConfig',
+        url: '/manage/system/config/updateConfig',
         method: 'post',
         data: data
       })
@@ -36,7 +36,7 @@ export function useConfigApi() {
 
     deleteConfig(id: number) {
       return request({
-        url: '/system/config/' + id,
+        url: '/manage/system/config/' + id,
         method: 'delete'
       })
     },

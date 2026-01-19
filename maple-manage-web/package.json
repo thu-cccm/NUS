@@ -67,7 +67,7 @@
 		"not dead"
 	],
 	"bugs": {
-		"url": "https://github.com/hack-feng/maple-boot/issues"
+		"url": "http://localhost:8080/issues"
 	},
 	"engines": {
 		"node": ">=16.0.0",
@@ -84,6 +84,6 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/hack-feng/maple-boot.git"
+		"url": "http://localhost:8080.git"
 	}
 }

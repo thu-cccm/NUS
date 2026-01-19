@@ -48,11 +48,6 @@
             <artifactId>maple-admin-generator</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.maple</groupId>
-            <artifactId>maple-admin-website</artifactId>
-        </dependency>
-
     </dependencies>
 
     <build>

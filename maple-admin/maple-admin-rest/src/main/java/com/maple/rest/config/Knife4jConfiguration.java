@@ -18,10 +18,10 @@ public class Knife4jConfiguration {
     public Docket adminManage() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(new ApiInfoBuilder()
-                        .title("笑小枫管理平台接口")
-                        .description("笑小枫管理平台接口")
-                        .termsOfServiceUrl("https:
-                        .contact(new Contact("笑小枫", "https:
+                        .title("管理平台接口")
+                        .description("管理平台接口")
+                        .termsOfServiceUrl("https:locahost:8080")
+                        .contact(new Contact( "maoshun tian","https:locahost:8080","maoshun.tian@gmail.com"))
                         .version("1.0")
                         .build())
 

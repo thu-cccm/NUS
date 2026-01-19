@@ -5,7 +5,7 @@ export function useDeptApi() {
 
         getTreeList(data: object) {
             return request({
-                url: '/system/dept/getTreeList',
+                url: '/manage/system/dept/getTreeList',
                 method: 'post',
                 data: data
             })
@@ -13,14 +13,14 @@ export function useDeptApi() {
 
         getDeptById(id: number) {
             return request({
-                url: '/system/dept/' + id,
+                url: '/manage/system/dept/' + id,
                 method: 'get'
             })
         },
 
         createDept(data: object) {
             return request({
-                url: '/system/dept/createDept',
+                url: '/manage/system/dept/createDept',
                 method: 'post',
                 data: data
             })
@@ -28,7 +28,7 @@ export function useDeptApi() {
 
         updateDept(data: object) {
             return request({
-                url: '/system/dept/updateDept',
+                url: '/manage/system/dept/updateDept',
                 method: 'post',
                 data: data
             })
@@ -36,7 +36,7 @@ export function useDeptApi() {
 
         deleteDept(id: number) {
             return request({
-                url: '/system/dept/' + id,
+                url: '/manage/system/dept/' + id,
                 method: 'delete'
             })
         },

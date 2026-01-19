@@ -14,6 +14,7 @@ import { useMenuApi } from '/@/api/system/menu';
 const useMenu = useMenuApi();
 
 const layouModules: any = import.meta.glob('../layout/routerView*.{vue,tsx}');
+const viewsModules: any = import.meta.glob('../views/**/*.{vue,tsx}');
 const dynamicViewsModules: Record<string, Function> = Object.assign({}, { ...layouModules }, { ...viewsModules });
 
 export async function initBackEndControlRoutes() {

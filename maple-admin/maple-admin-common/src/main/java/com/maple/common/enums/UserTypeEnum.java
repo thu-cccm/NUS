@@ -1,10 +1,5 @@
 package com.maple.common.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@Getter
-@AllArgsConstructor
 public enum UserTypeEnum {
 
     SYSTEM_USER("00", "系统用户"),
@@ -14,4 +9,17 @@ public enum UserTypeEnum {
     private final String code;
 
     private final String desc;
+
+    UserTypeEnum(String code, String desc) {
+        this.code = code;
+        this.desc = desc;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
 }

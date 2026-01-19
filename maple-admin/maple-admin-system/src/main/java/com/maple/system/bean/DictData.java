@@ -73,4 +73,11 @@ public class DictData extends Model<DictData> {
         return this.id;
     }
 
+    public String getDictCode() {
+        return dictCode;
+    }
+
+    public void setDictCode(String dictCode) {
+        this.dictCode = dictCode;
+    }
 }

@@ -13,7 +13,7 @@
 					</div>
 				</div>
 				<div class="right">
-					<img src="https:
+					<!-- 图片资源占位符，后续可替换为实际图片 -->
 				</div>
 			</div>
 		</div>

@@ -23,31 +23,31 @@ public class DictController {
 
     private final IDictTypeService dictTypeService;
 
-    @ApiOperation(value = "分页查询系统管理-字典类型列表", notes = "系统管理-字典类型-分页查询列表", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "分页查询系统管理-字典类型列表", notes = "系统管理-字典类型-分页查询列表", nickname = "tian-localhost:8080")
     @PostMapping("/getPageList")
     public IPage<DictTypeModel> getPageList(@RequestBody DictTypePageQuery query) {
         return dictTypeService.getPageList(query);
     }
 
-    @ApiOperation(value = "根据id查询系统管理-字典类型信息", notes = "系统管理-字典类型-根据id查询数据信息", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "根据id查询系统管理-字典类型信息", notes = "系统管理-字典类型-根据id查询数据信息", nickname = "tian-localhost:8080")
     @GetMapping(value = "/{id}")
     public DictTypeModel getDictTypeById(@PathVariable("id") Long id) {
         return dictTypeService.getDictTypeById(id);
     }
 
-    @ApiOperation(value = "新增系统管理-字典类型数据", notes = "系统管理-字典类型-新增数据", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "新增系统管理-字典类型数据", notes = "系统管理-字典类型-新增数据", nickname = "tian-localhost:8080")
     @PostMapping("/createDictType")
     public Long createDictType(@RequestBody DictTypeModel model) {
         return dictTypeService.createDictType(model);
     }
 
-    @ApiOperation(value = "/修改系统管理-字典类型数据", notes = "系统管理-字典类型-修改数据", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "/修改系统管理-字典类型数据", notes = "系统管理-字典类型-修改数据", nickname = "tian-localhost:8080")
     @PostMapping("/updateDictType")
     public void updateDictType(@RequestBody DictTypeModel model) {
         dictTypeService.updateDictType(model);
     }
 
-    @ApiOperation(value = "删除系统管理-字典类型", notes = "系统管理-字典类型-根据id删除数据信息", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "删除系统管理-字典类型", notes = "系统管理-字典类型-根据id删除数据信息", nickname = "tian-localhost:8080")
     @DeleteMapping("/{id}")
     public Integer deleteDictType(@PathVariable("id") Long id) {
         return dictTypeService.deleteDictType(id);

@@ -23,6 +23,8 @@ import java.util.List;
 @RestControllerAdvice
 public class ExceptionAdvice {
 
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ExceptionAdvice.class);
+
     @ExceptionHandler(MapleBaseException.class)
     public ResultJson mapleBaseException(MapleBaseException e) {
         log.error("自定义异常信息 ex={}", e.getMessage(), e);

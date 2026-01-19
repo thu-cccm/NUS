@@ -178,7 +178,7 @@ const onHandleCommandClick = (path: string) => {
 			})
 			.catch(() => {});
 	} else if (path === 'wareHouse') {
-		window.open('https:
+		window.open('http://localhost:8080', '_blank');
 	} else {
 		router.push(path);
 	}

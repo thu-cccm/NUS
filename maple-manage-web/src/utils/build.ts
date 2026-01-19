@@ -3,7 +3,7 @@ import importToCDN from 'vite-plugin-cdn-import';
 export const buildConfig = {
 	cdn() {
 		return importToCDN({
-			prodUrl: 'https:
+			prodUrl: 'https://unpkg.com/',
 			modules: [
 
 				{

@@ -23,4 +23,19 @@ public class DictTypePageQuery {
     @ApiModelProperty(value = "请求信息")
     private DictTypeModel query;
 
+    public Page<DictType> getPage() {
+        return page;
+    }
+
+    public void setPage(Page<DictType> page) {
+        this.page = page;
+    }
+
+    public DictTypeModel getQuery() {
+        return query;
+    }
+
+    public void setQuery(DictTypeModel query) {
+        this.query = query;
+    }
 }

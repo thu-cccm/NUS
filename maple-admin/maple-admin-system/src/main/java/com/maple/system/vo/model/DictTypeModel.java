@@ -47,4 +47,19 @@ public class DictTypeModel {
     @ApiModelProperty(value = "字典明细列表")
     private List<DictDataModel> dictDataModelList;
 
+    public String getDictCode() {
+        return dictCode;
+    }
+
+    public void setDictCode(String dictCode) {
+        this.dictCode = dictCode;
+    }
+
+    public List<DictDataModel> getDictDataModelList() {
+        return dictDataModelList;
+    }
+
+    public void setDictDataModelList(List<DictDataModel> dictDataModelList) {
+        this.dictDataModelList = dictDataModelList;
+    }
 }

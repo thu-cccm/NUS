@@ -1,13 +1,13 @@
 spring:
   datasource:
     dynamic:
-      primary: xiaoxiaofeng #设置默认的数据源或者数据源组,默认值即为master
+      primary: tian #设置默认的数据源或者数据源组,默认值即为master
       strict: false #严格匹配数据源,默认false. true未匹配到指定数据源时抛异常,false使用默认数据源
       datasource:
-        xiaoxiaofeng:
-          url: jdbc:mysql://127.0.0.1:3306/maple-boot?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+        tian:
+          url: jdbc:mysql://127.0.0.1:3306/maple-boot?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull
           username: root
-          password: 123456
+          password: 
           driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -38,7 +38,7 @@ spring:
   redis:
     database: 0
     host: 127.0.0.1
-    password: 123456
+    password: 
     port: 6379
     timeout: 15000
     lettuce:
@@ -100,7 +100,7 @@ knife4j:
   basic:
     enable: true
     # Basic认证用户名
-    username: xiaoxiaofeng
+    username: tian
     # Basic认证密码
     password: 123456
 maple:

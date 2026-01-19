@@ -18,32 +18,32 @@ public class ConfigController {
     
     private final IConfigService configService;
 
-    @ApiOperation(value = "分页查询系统管理-参数配置列表", notes="系统管理-参数配置-分页查询列表", nickname = "www.xiaoxiaofeng.com")
+    @ApiOperation(value = "分页查询系统管理-参数配置列表", notes="系统管理-参数配置-分页查询列表", nickname = "localhost:8080")
     @PostMapping("/getPageList")
     @DataScope
     public IPage<ConfigModel> getPageList(@RequestBody ConfigPageQuery query) {
         return configService.getPageList(query);
     }
 
-    @ApiOperation(value = "根据id查询系统管理-参数配置信息", notes="系统管理-参数配置-根据id查询数据信息", nickname = "www.xiaoxiaofeng.com")
+    @ApiOperation(value = "根据id查询系统管理-参数配置信息", notes="系统管理-参数配置-根据id查询数据信息", nickname = "localhost:8080")
     @GetMapping(value = "/{id}")
     public ConfigModel getConfigById(@PathVariable("id") Long id) {
         return configService.getConfigById(id);
     }
 
-    @ApiOperation(value = "新增系统管理-参数配置数据", notes="系统管理-参数配置-新增数据", nickname = "www.xiaoxiaofeng.com")
+    @ApiOperation(value = "新增系统管理-参数配置数据", notes="系统管理-参数配置-新增数据", nickname = "localhost:8080")
     @PostMapping("/createConfig")
     public Long createConfig(@RequestBody ConfigModel model) {
         return configService.createConfig(model);
     }
 
-    @ApiOperation(value = "/修改系统管理-参数配置数据", notes="系统管理-参数配置-修改数据", nickname = "www.xiaoxiaofeng.com")
+    @ApiOperation(value = "/修改系统管理-参数配置数据", notes="系统管理-参数配置-修改数据", nickname = "localhost:8080")
     @PostMapping("/updateConfig")
     public void updateConfig(@RequestBody ConfigModel model) {
         configService.updateConfig(model);
     }
 
-    @ApiOperation(value = "删除系统管理-参数配置", notes="系统管理-参数配置-根据id删除数据信息", nickname = "www.xiaoxiaofeng.com")
+    @ApiOperation(value = "删除系统管理-参数配置", notes="系统管理-参数配置-根据id删除数据信息", nickname = "localhost:8080")
     @DeleteMapping("/{id}")
     public Integer deleteConfig(@PathVariable("id") Long id) {
         return configService.deleteConfig(id);

@@ -1,10 +1,5 @@
 package com.maple.common.config.exception;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@AllArgsConstructor
-@Getter
 public enum ErrorCode {
 
     NO_TOKEN("1001", "用户未登录"),
@@ -18,10 +13,23 @@ public enum ErrorCode {
     PARAM_ERROR("9001", "请求参数有误，请重试"),
     NOT_FIND_DATA("9002", "数据不存在，请刷新后重试"),
     
-    COMMON_ERROR("9998", "笑小枫太懒，居然没有定义异常原因"),
-    OTHER_ERROR("9999", "未知异常，请联系笑小枫：https:
+    COMMON_ERROR("9998", "系统异常，请联系管理员"),
+    OTHER_ERROR("9999", "未知异常，请联系管理员");
 
     private final String code;
 
     private final String msg;
+
+    ErrorCode(String code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
 }

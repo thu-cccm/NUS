@@ -27,9 +27,9 @@
 			<transition name="el-zoom-in-center">
 				<div v-show="state.isShowLoockLogin" class="layout-lock-screen-login">
 					<div class="layout-lock-screen-login-box">
-						<div class="layout-lock-screen-login-box-img">
-							<img src="https:
-						</div>
+					<div class="layout-lock-screen-login-box-img">
+						<!-- 头像图片占位符，后续可替换为实际图片 -->
+					</div>
 						<div class="layout-lock-screen-login-box-name">Administrator</div>
 						<div class="layout-lock-screen-login-box-value">
 							<el-input
@@ -211,7 +211,8 @@ onUnmounted(() => {
 }
 .layout-lock-screen-img {
 	@extend .layout-lock-screen-fixed;
-	background-image: url('https:
+	/* background-image: url('http://localhost:8080/bg.jpg'); */
+	background-color: #f5f5f5;
 	background-size: 100% 100%;
 	z-index: 9999991;
 }

@@ -27,13 +27,13 @@ const state = reactive({
 	newsList: [
 		{
 			label: '关于版本发布的通知',
-			value: 'MapleBoot管理端配套网站已上线，欢迎体验',
-			time: '2024-08-08',
+			value: '新农村建设信息管理系统已完成数据初始化，可进行业务演示。',
+			time: '2025-02-20',
 		},
 		{
 			label: '关于学习交流的通知',
-			value: '有任何问题都可以联系笑小枫，微信：q1150640979',
-			time: '2024-08-08',
+			value: '如需操作指导，请查看系统的部署与使用说明。',
+			time: '2025-02-20',
 		},
 	],
 });
@@ -43,7 +43,7 @@ const onAllReadClick = () => {
 };
 
 const onGoToGiteeClick = () => {
-	window.open('https:
+	window.open('/#/home', '_self');
 };
 </script>
 

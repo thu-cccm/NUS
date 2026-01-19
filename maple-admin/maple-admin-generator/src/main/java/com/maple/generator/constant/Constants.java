@@ -6,9 +6,9 @@ public class Constants {
 
     public static final String GBK = "GBK";
 
-    public static final String HTTP = "http:
+    public static final String HTTP = "http://localhost:8080";
 
-    public static final String HTTPS = "https:
+    public static final String HTTPS = "https://localhost:8080";
 
     public static final String SUCCESS = "0";
 

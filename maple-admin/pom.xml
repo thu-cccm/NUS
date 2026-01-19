@@ -20,7 +20,6 @@
         <module>maple-admin-system</module>
         <module>maple-admin-generator</module>
         <module>maple-admin-rest</module>
-        <module>maple-admin-website</module>
     </modules>
 
     <properties>
@@ -29,7 +28,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <nacos.version>0.2.10</nacos.version>
-        <lombok.version>1.16.18</lombok.version>
+        <lombok.version>1.18.30</lombok.version>
         <druid-version>1.2.11</druid-version>
         <mybatis-plus-version>3.5.2</mybatis-plus-version>
         <velocity-version>2.0</velocity-version>
@@ -130,11 +129,6 @@
             <dependency>
                 <groupId>com.maple</groupId>
                 <artifactId>maple-admin-system</artifactId>
-                <version>${maple.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.maple</groupId>
-                <artifactId>maple-admin-website</artifactId>
                 <version>${maple.version}</version>
             </dependency>
             <dependency>
@@ -248,5 +242,6 @@
         </dependency>
 
     </dependencies>
+
 
 </project>

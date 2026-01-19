@@ -5,4 +5,4 @@ spring:
   application:
     name: maple-admin
   profiles:
-    active: pro
+    active: dev

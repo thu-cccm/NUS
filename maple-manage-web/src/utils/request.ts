@@ -4,9 +4,12 @@ import { Session } from '/@/utils/storage';
 import qs from 'qs';
 
 const service: AxiosInstance = axios.create({
-	baseURL: import.meta.env.VITE_API_URL,
+	baseURL: import.meta.env.VITE_API_URL || '/manageApi',
 	timeout: 50000,
-	headers: { 'Content-Type': 'application/json' },
+	headers: { 
+		'Content-Type': 'application/json;charset=UTF-8',
+		'Accept': 'application/json;charset=UTF-8'
+	},
 	paramsSerializer: {
 		serialize(params) {
 			return qs.stringify(params, { allowDots: true });

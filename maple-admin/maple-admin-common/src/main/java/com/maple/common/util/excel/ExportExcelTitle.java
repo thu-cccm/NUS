@@ -4,7 +4,6 @@ import com.maple.common.util.excel.bean.ExportTableBean;
 import com.maple.common.util.excel.bean.ExportExcelTheme;
 import com.maple.common.util.excel.bean.GradeBean;
 import com.maple.common.util.excel.bean.UserBean;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.util.CollectionUtils;
 
@@ -13,7 +12,6 @@ import java.util.*;
 
 public class ExportExcelTitle {
     @Getter
-    @AllArgsConstructor
     public enum UserExcel {
 
         ORDER("序号", "order", 8),
@@ -30,6 +28,24 @@ public class ExportExcelTitle {
         private final String valueKey;
 
         private final Integer titleWidth;
+
+        UserExcel(String titleCn, String valueKey, Integer titleWidth) {
+            this.titleCn = titleCn;
+            this.valueKey = valueKey;
+            this.titleWidth = titleWidth;
+        }
+
+        public String getTitleCn() {
+            return titleCn;
+        }
+
+        public String getValueKey() {
+            return valueKey;
+        }
+
+        public Integer getTitleWidth() {
+            return titleWidth;
+        }
 
         public static ExportTableBean getValue(List<UserBean> list, String excelName, ExportExcelTheme theme) {
             List<String> titleCn = new ArrayList<>();
@@ -54,7 +70,6 @@ public class ExportExcelTitle {
     }
 
     @Getter
-    @AllArgsConstructor
     public enum GradeExcel {
 
         ORDER("序号", "order", 8),
@@ -70,6 +85,24 @@ public class ExportExcelTitle {
         private final String valueKey;
 
         private final Integer titleWidth;
+
+        GradeExcel(String titleCn, String valueKey, Integer titleWidth) {
+            this.titleCn = titleCn;
+            this.valueKey = valueKey;
+            this.titleWidth = titleWidth;
+        }
+
+        public String getTitleCn() {
+            return titleCn;
+        }
+
+        public String getValueKey() {
+            return valueKey;
+        }
+
+        public Integer getTitleWidth() {
+            return titleWidth;
+        }
 
         public static ExportTableBean getValue(List<GradeBean> list, String excelName, ExportExcelTheme theme) {
             List<String> titleCn = new ArrayList<>();

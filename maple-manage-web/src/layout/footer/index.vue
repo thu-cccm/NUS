@@ -1,7 +1,7 @@
 <template>
 	<div class="layout-footer pb15">
 		<div class="layout-footer-warp">
-			<div>maple-admin, 由笑小枫开发❤️</div>
+			<div>新农村建设信息管理系统 · 毕业设计演示平台</div>
 		</div>
 	</div>
 </template>

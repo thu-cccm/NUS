@@ -9,6 +9,8 @@ import org.springframework.util.StringUtils;
 @Slf4j
 public class Md5Util {
 
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(Md5Util.class);
+
     private Md5Util() {
 
     }

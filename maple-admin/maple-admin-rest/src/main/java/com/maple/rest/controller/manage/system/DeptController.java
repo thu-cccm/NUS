@@ -17,31 +17,31 @@ public class DeptController {
 
     private final IDeptService deptService;
 
-    @ApiOperation(value = "查询用户中心-部门树结构", notes="用户中心-部门-查询树结构", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "查询用户中心-部门树结构", notes="用户中心-部门-查询树结构", nickname = "tian-localhost:8080")
     @PostMapping("/getTreeList")
     public List<DeptModel> getTreeList(@RequestBody DeptModel model) {
         return deptService.getTreeList(model);
     }
 
-    @ApiOperation(value = "根据id查询用户中心-部门信息", notes="用户中心-部门-根据id查询数据信息", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "根据id查询用户中心-部门信息", notes="用户中心-部门-根据id查询数据信息", nickname = "tian-localhost:8080")
     @GetMapping(value = "/{id}")
     public DeptModel getDeptById(@PathVariable("id") Long id) {
         return deptService.getDeptById(id);
     }
 
-    @ApiOperation(value = "新增用户中心-部门数据", notes="用户中心-部门-新增数据", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "新增用户中心-部门数据", notes="用户中心-部门-新增数据", nickname = "tian-localhost:8080")
     @PostMapping("/createDept")
     public Long createDept(@RequestBody DeptModel model) {
         return deptService.createDept(model);
     }
 
-    @ApiOperation(value = "修改用户中心-部门数据", notes="用户中心-部门-修改数据", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "修改用户中心-部门数据", notes="用户中心-部门-修改数据", nickname = "tian-localhost:8080")
     @PostMapping("/updateDept")
     public void updateDept(@RequestBody DeptModel model) {
         deptService.updateDept(model);
     }
 
-    @ApiOperation(value = "删除用户中心-部门", notes="用户中心-部门-根据id删除数据信息", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "删除用户中心-部门", notes="用户中心-部门-根据id删除数据信息", nickname = "tian-localhost:8080")
     @DeleteMapping("/{id}")
     public Integer deleteDept(@PathVariable("id") Long id) {
         return deptService.deleteDept(id);

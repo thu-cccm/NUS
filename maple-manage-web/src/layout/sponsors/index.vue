@@ -21,8 +21,8 @@ const state = reactive({
 		list: [
 			{
 				url: wxImg,
-				text: `扫码添加笑小枫`,
-				link: 'https:
+				text: `新农村建设信息管理系统`,
+				link: '/#/home',
 			},
 		],
 		isShow: false,

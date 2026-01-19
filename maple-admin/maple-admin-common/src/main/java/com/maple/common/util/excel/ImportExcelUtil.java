@@ -18,6 +18,8 @@ import java.util.Map;
 @Slf4j
 public class ImportExcelUtil {
 
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ImportExcelUtil.class);
+
     private ImportExcelUtil() {
     }
 

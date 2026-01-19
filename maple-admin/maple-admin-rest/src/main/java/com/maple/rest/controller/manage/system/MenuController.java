@@ -25,31 +25,31 @@ public class MenuController {
         return menuService.selectMenuTreeByUserId(JwtUtil.getUserId());
     }
 
-    @ApiOperation(value = "查询用户中心-菜单权限树结构", notes = "用户中心-菜单权限-查询树结构", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "查询用户中心-菜单权限树结构", notes = "用户中心-菜单权限-查询树结构", nickname = "tian-localhost:8080")
     @PostMapping("/getTreeList")
     public List<MenuModel> getTreeList(@RequestBody MenuModel model) {
         return menuService.getTreeList(model);
     }
 
-    @ApiOperation(value = "根据id查询用户中心-菜单权限信息", notes = "用户中心-菜单权限-根据id查询数据信息", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "根据id查询用户中心-菜单权限信息", notes = "用户中心-菜单权限-根据id查询数据信息", nickname = "tian-localhost:8080")
     @GetMapping(value = "/{id}")
     public MenuModel getMenuById(@PathVariable("id") Long id) {
         return menuService.getMenuById(id);
     }
 
-    @ApiOperation(value = "新增用户中心-菜单权限数据", notes = "用户中心-菜单权限-新增数据", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "新增用户中心-菜单权限数据", notes = "用户中心-菜单权限-新增数据", nickname = "tian-localhost:8080")
     @PostMapping("/createMenu")
     public Long createMenu(@RequestBody MenuModel model) {
         return menuService.createMenu(model);
     }
 
-    @ApiOperation(value = "/修改用户中心-菜单权限数据", notes = "用户中心-菜单权限-修改数据", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "/修改用户中心-菜单权限数据", notes = "用户中心-菜单权限-修改数据", nickname = "tian-localhost:8080")
     @PostMapping("/updateMenu")
     public void updateMenu(@RequestBody MenuModel model) {
         menuService.updateMenu(model);
     }
 
-    @ApiOperation(value = "删除用户中心-菜单权限", notes = "用户中心-菜单权限-根据id删除数据信息", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "删除用户中心-菜单权限", notes = "用户中心-菜单权限-根据id删除数据信息", nickname = "tian-localhost:8080")
     @DeleteMapping("/{id}")
     public Integer deleteMenu(@PathVariable("id") Long id) {
         return menuService.deleteMenu(id);

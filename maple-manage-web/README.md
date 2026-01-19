@@ -24,7 +24,7 @@
 
 ```bash
 # 克隆项目
-git clone https://gitee.com/hack-feng/maple-boot.git
+git clone http://localhost:8080
 
 # 进入项目
 cd maple-manage-web
@@ -41,4 +41,4 @@ npm run build
 
 #### 📚 开发文档
 
-- 查看开发文档：<a href="https://www.xiaoxiaofeng.com/category/49" target="_blank">Maple Boot</a>
+- 查看开发文档：<a href="http://localhost:8080/category/49" target="_blank">Maple Boot</a>

@@ -3,7 +3,7 @@ export function useDictApi() {
 
         getPageList(data: object) {
             return request({
-                url: '/dict/getPageList',
+                url: '/manage/dict/getPageList',
                 method: 'post',
                 data: data
             })
@@ -11,14 +11,14 @@ export function useDictApi() {
 
         getDictById(id: number) {
             return request({
-                url: '/dict/' + id,
+                url: '/manage/dict/' + id,
                 method: 'get'
             })
         },
 
         createDict(data: object) {
             return request({
-                url: '/dict/createDictType',
+                url: '/manage/dict/createDictType',
                 method: 'post',
                 data: data
             })
@@ -26,7 +26,7 @@ export function useDictApi() {
 
         updateDict(data: object) {
             return request({
-                url: '/dict/updateDictType',
+                url: '/manage/dict/updateDictType',
                 method: 'post',
                 data: data
             })
@@ -34,21 +34,21 @@ export function useDictApi() {
 
         deleteDict(id: number) {
             return request({
-                url: '/dict/' + id,
+                url: '/manage/dict/' + id,
                 method: 'delete'
             })
         },
 
         getDictByCode(dictCode: string){
             return request({
-                url: '/dict/getDictByCode/' + dictCode,
+                url: '/manage/dict/getDictByCode/' + dictCode,
                 method: 'get'
             })
         },
 
         getDictTypeList(){
             return request({
-                url: '/dict/getDictTypeList',
+                url: '/manage/dict/getDictTypeList',
                 method: 'post'
             })
         }

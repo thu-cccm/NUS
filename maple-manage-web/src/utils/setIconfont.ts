@@ -1,7 +1,4 @@
-const cssCdnUrlList: Array<string> = [
-	'
-	'
-];
+const cssCdnUrlList: Array<string> = [];
 
 const jsCdnUrlList: Array<string> = [];
 

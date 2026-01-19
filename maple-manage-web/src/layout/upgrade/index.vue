@@ -17,7 +17,7 @@
 			<div class="upgrade-content">
 				{{ getThemeConfig.globalTitle }} {{ $t('message.upgrade.msg') }}
 				<div class="mt5">
-					<el-link type="primary" class="font12" href="https:
+					<el-link type="primary" class="font12" href="http://localhost:8080/changelog" target="_blank">
 						CHANGELOG.md
 					</el-link>
 				</div>

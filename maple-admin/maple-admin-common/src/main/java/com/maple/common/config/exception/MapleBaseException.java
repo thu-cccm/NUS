@@ -28,4 +28,12 @@ public class MapleBaseException extends RuntimeException {
         this.code = code.getCode();
         this.errorMsg = errorMsg;
     }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getErrorMsg() {
+        return errorMsg;
+    }
 }

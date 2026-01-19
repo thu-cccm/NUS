@@ -17,8 +17,8 @@
 			<div class="login-right-warp flex-margin">
 				<span class="login-right-warp-one"></span>
 				<span class="login-right-warp-two"></span>
-				<div class="login-right-warp-mian">
-					<div class="login-right-warp-main-title">{{ getThemeConfig.globalTitle }} 欢迎您！</div>
+					<div class="login-right-warp-mian">
+						<div class="login-right-warp-main-title">新农村数字化治理平台</div>
 					<div class="login-right-warp-main-form">
 						<div v-if="!state.isScan">
 							<el-tabs v-model="state.tabsActiveName">
@@ -47,7 +47,7 @@ import { defineAsyncComponent, onMounted, reactive, computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useThemeConfig } from '/@/stores/themeConfig';
 import { NextLoading } from '/@/utils/loading';
-import logoMini from '/@/assets/logo-mini.png';
+import logoMini from '/@/assets/logo-rural.svg';
 import loginMain from '/@/assets/login-main.svg';
 import loginBg from '/@/assets/login-bg.svg';
 
@@ -75,10 +75,11 @@ onMounted(() => {
 .login-container {
 	height: 100%;
 	background: var(--el-color-white);
-	.login-left {
+		.login-left {
 		flex: 1;
 		position: relative;
-		background-color: rgba(211, 239, 255, 1);
+			background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+				url('/src/assets/wx.jpg') center / cover no-repeat;
 		margin-right: 100px;
 		.login-left-logo {
 			display: flex;
@@ -95,14 +96,14 @@ onMounted(() => {
 			.login-left-logo-text {
 				display: flex;
 				flex-direction: column;
-				span {
+					span {
 					margin-left: 10px;
 					font-size: 28px;
-					color: #26a59a;
+						color: #eaf6ea;
 				}
 				.login-left-logo-text-msg {
 					font-size: 12px;
-					color: #32a99e;
+						color: #d4f2d4;
 				}
 			}
 		}

@@ -19,37 +19,37 @@ public class RoleController {
 
     private final IRoleService roleService;
 
-    @ApiOperation(value = "分页查询用户中心-角色信息列表", notes = "用户中心-角色信息-分页查询列表", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "分页查询用户中心-角色信息列表", notes = "用户中心-角色信息-分页查询列表", nickname = "tian-localhost:8080")
     @PostMapping("/getPageList")
     public IPage<RoleModel> getPageList(@RequestBody RolePageQuery query) {
         return roleService.getPageList(query);
     }
 
-    @ApiOperation(value = "查询有效角色信息列表", notes = "用户中心-角色信息-查询有效角色信息列表", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "查询有效角色信息列表", notes = "用户中心-角色信息-查询有效角色信息列表", nickname = "tian-localhost:8080")
     @PostMapping("/getRoleList")
     public List<RoleModel> getRoleList() {
         return roleService.getRoleList();
     }
 
-    @ApiOperation(value = "根据id查询用户中心-角色信息信息", notes = "用户中心-角色信息-根据id查询数据信息", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "根据id查询用户中心-角色信息信息", notes = "用户中心-角色信息-根据id查询数据信息", nickname = "tian-localhost:8080")
     @GetMapping(value = "/{id}")
     public RoleModel getRoleById(@PathVariable("id") Long id) {
         return roleService.getRoleById(id);
     }
 
-    @ApiOperation(value = "新增用户中心-角色信息数据", notes = "用户中心-角色信息-新增数据", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "新增用户中心-角色信息数据", notes = "用户中心-角色信息-新增数据", nickname = "tian-localhost:8080")
     @PostMapping("/createRole")
     public Long createRole(@RequestBody RoleModel model) {
         return roleService.createRole(model);
     }
 
-    @ApiOperation(value = "/修改用户中心-角色信息数据", notes = "用户中心-角色信息-修改数据", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "/修改用户中心-角色信息数据", notes = "用户中心-角色信息-修改数据", nickname = "tian-localhost:8080")
     @PostMapping("/updateRole")
     public void updateRole(@RequestBody RoleModel model) {
         roleService.updateRole(model);
     }
 
-    @ApiOperation(value = "删除用户中心-角色信息", notes = "用户中心-角色信息-根据id删除数据信息", nickname = "笑小枫-www.xiaoxiaofeng.com")
+    @ApiOperation(value = "删除用户中心-角色信息", notes = "用户中心-角色信息-根据id删除数据信息", nickname = "tian-localhost:8080")
     @DeleteMapping("/{id}")
     public Integer deleteRole(@PathVariable("id") Long id) {
         return roleService.deleteRole(id);

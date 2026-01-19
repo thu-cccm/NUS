@@ -5,7 +5,7 @@ export function useGenerateApi() {
 
         getPageList(data: object) {
             return request({
-                url: '/generate/getPageList',
+                url: '/manage/generate/getPageList',
                 method: 'post',
                 data: data
             })
@@ -13,7 +13,7 @@ export function useGenerateApi() {
 
         getDbList(data: object) {
             return request({
-                url: '/generate/getDbList',
+                url: '/manage/generate/getDbList',
                 method: 'post',
                 data: data
             })
@@ -21,7 +21,7 @@ export function useGenerateApi() {
 
         importTable(data: object) {
             return request({
-                url: '/generate/importTable',
+                url: '/manage/generate/importTable',
                 method: 'post',
                 data: data
             })
@@ -29,40 +29,40 @@ export function useGenerateApi() {
 
         preview(id: number) {
             return request({
-                url: '/generate/preview/' + id,
+                url: '/manage/generate/preview/' + id,
                 method: 'get'
             })
         },
 
         getInfo(id: number) {
             return request({
-                url: '/generate/' + id,
+                url: '/manage/generate/' + id,
                 method: 'get'
             })
         },
         updateGenTable(data: object) {
             return request({
-                url: '/generate/updateGenTable',
+                url: '/manage/generate/updateGenTable',
                 method: 'post',
                 data: data
             }) 
         },
         deleteById(id: number) {
             return request({
-                url: '/generate/' + id,
+                url: '/manage/generate/' + id,
                 method: 'delete'
             })
         },
         download(tableName: String) {
             return request({
-                url: '/generate/download/' + tableName,
+                url: '/manage/generate/download/' + tableName,
                 method: 'get',
                 responseType: "blob"
             })
         },
         batchDownload(data: object) {
             return request({
-                url: '/generate/batchDownload',
+                url: '/manage/generate/batchDownload',
                 method: 'post',
                 data: data,
                 responseType: "blob"

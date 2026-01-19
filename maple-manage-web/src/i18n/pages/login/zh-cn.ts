@@ -21,7 +21,7 @@ export default {
 		msgText: '* 温馨提示：建议使用谷歌、Microsoft Edge，版本 79.0.1072.62 及以上浏览器，360浏览器请使用极速模式',
 	},
 	scan: {
-		text: '打开手机扫一扫，添加笑小枫好友',
+		text: '打开手机扫一扫，查看系统使用说明',
 	},
 	signInText: '欢迎回来！',
 };

@@ -23,10 +23,15 @@ import java.util.*;
 
 @Slf4j
 @Component
-@AllArgsConstructor
 public class LocalFileUtil {
+
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(LocalFileUtil.class);
     
     private final LocalFileProperties fileProperties;
+
+    public LocalFileUtil(LocalFileProperties fileProperties) {
+        this.fileProperties = fileProperties;
+    }
 
     private static final List<String> FILE_TYPE_LIST_IMAGE = Arrays.asList(
             "image/png",

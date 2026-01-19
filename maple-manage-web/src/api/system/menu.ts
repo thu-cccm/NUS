@@ -5,14 +5,14 @@ export function useMenuApi() {
 
         getRouters() {
             return request({
-                url: '/system/menu/getRouters',
+                url: '/manage/system/menu/getRouters',
                 method: 'get'
             })
         },
 
         getTreeList(data: object) {
             return request({
-                url: '/system/menu/getTreeList',
+                url: '/manage/system/menu/getTreeList',
                 method: 'post',
                 data: data
             })
@@ -20,14 +20,14 @@ export function useMenuApi() {
 
         getMenuById(id: number) {
             return request({
-                url: '/system/menu/' + id,
+                url: '/manage/system/menu/' + id,
                 method: 'get'
             })
         },
 
         createMenu(data: object) {
             return request({
-                url: '/system/menu/createMenu',
+                url: '/manage/system/menu/createMenu',
                 method: 'post',
                 data: data
             })
@@ -35,7 +35,7 @@ export function useMenuApi() {
 
         updateMenu(data: object) {
             return request({
-                url: '/system/menu/updateMenu',
+                url: '/manage/system/menu/updateMenu',
                 method: 'post',
                 data: data
             })
@@ -43,7 +43,7 @@ export function useMenuApi() {
 
         deleteMenu(id: number) {
             return request({
-                url: '/system/menu/' + id,
+                url: '/manage/system/menu/' + id,
                 method: 'delete'
             })
         },

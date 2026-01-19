@@ -30,13 +30,13 @@ const viteConfig = defineConfig((mode: ConfigEnv) => {
 			hmr: true,
 			proxy: {
 				'/manageApi': {
-					target: 'http:
+					target: 'http://localhost:6666',
 					ws: true,
 					changeOrigin: true,
 					rewrite: (path) => path.replace(/^\/manageApi/, ''),
 				},
 				'/fileApi': {
-					target: 'http:
+					target: 'http://localhost:6666',
 					ws: true,
 					changeOrigin: true,
 					rewrite: (path) => path.replace(/^\/fileApi/, ''),
@@ -53,7 +53,7 @@ const viteConfig = defineConfig((mode: ConfigEnv) => {
 					assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
 					manualChunks(id) {
 						if (id.includes('node_modules')) {
-							return id.toString().match(/\/node_modules\/(?!.pnpm)(?<moduleName>[^\/]*)\
+							return id.toString().match(/\/node_modules\/(?!.pnpm)(?<moduleName>[^\/]*)\/.*/)?.[1] || 'vendor';
 						}
 					},
 				},

@@ -10,12 +10,19 @@ import zhtwLocale from 'element-plus/es/locale/lang/zh-tw';
 const messages = {}; 
 const element = { en: enLocale, 'zh-cn': zhcnLocale, 'zh-tw': zhtwLocale };
 const itemize = { en: [], 'zh-cn': [], 'zh-tw': [] };
-const modules: Record<string, any> = import.meta.glob('.*.ts', { eager: true });
+const modules: Record<string, any> = import.meta.glob('./lang/*.ts', { eager: true });
+const pageModules: Record<string, any> = import.meta.glob('./pages/**/*.ts', { eager: true });
 
 for (const path in modules) {
 	const key = path.match(/(\S+)\/(\S+).ts/);
-	if (itemize[key![2]]) itemize[key![2]].push(modules[path].default);
-	else itemize[key![2]] = modules[path];
+	if (key && itemize[key[2]]) itemize[key[2]].push(modules[path].default);
+	else if (key) itemize[key[2]] = modules[path];
+}
+
+for (const path in pageModules) {
+	const key = path.match(/(\S+)\/(\S+).ts/);
+	if (key && itemize[key[2]]) itemize[key[2]].push(pageModules[path].default);
+	else if (key) itemize[key[2]] = pageModules[path];
 }
 
 function mergeArrObj<T>(list: T, key: string) {

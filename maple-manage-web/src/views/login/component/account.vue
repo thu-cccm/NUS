@@ -95,23 +95,26 @@ const currentTime = computed(() => {
 });
 
 const onSignIn = async () => {
-  loginApi.signIn(state.ruleForm).then(async res => {
-
+  state.loading.signIn = true;
+  try {
+    const res = await loginApi.signIn(state.ruleForm);
+    
     Session.set('token', res.token);
 
     useUserInfo();
-	state.loading.signIn = true;
+    
     if (!themeConfig.value.isRequestRoutes) {
-
       const isNoPower = await initFrontEndControlRoutes();
       signInSuccess(isNoPower);
     } else {
-
       const isNoPower = await initBackEndControlRoutes();
-
       signInSuccess(isNoPower);
     }
-  });
+  } catch (error: any) {
+    console.error('登录失败:', error);
+    ElMessage.error(error?.msg || '登录失败，请检查用户名和密码');
+    state.loading.signIn = false;
+  }
 };
 
 const signInSuccess = (isNoPower: boolean | undefined) => {

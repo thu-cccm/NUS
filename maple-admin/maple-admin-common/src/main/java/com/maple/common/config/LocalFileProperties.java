@@ -17,4 +17,27 @@ public class LocalFileProperties {
     @Value("${file.maxFileSize}")
     private long maxFileSize;
 
+    public String getImageFilePath() {
+        return imageFilePath;
+    }
+
+    public void setImageFilePath(String imageFilePath) {
+        this.imageFilePath = imageFilePath;
+    }
+
+    public String getDocFilePath() {
+        return docFilePath;
+    }
+
+    public void setDocFilePath(String docFilePath) {
+        this.docFilePath = docFilePath;
+    }
+
+    public long getMaxFileSize() {
+        return maxFileSize;
+    }
+
+    public void setMaxFileSize(long maxFileSize) {
+        this.maxFileSize = maxFileSize;
+    }
 }

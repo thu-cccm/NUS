@@ -22,6 +22,8 @@ import java.util.List;
 @Component
 public class LuceneUtils {
 
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(LuceneUtils.class);
+
     @Value("${file.lucenePath}")
     private String lucenePath;
 

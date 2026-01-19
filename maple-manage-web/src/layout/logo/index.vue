@@ -12,7 +12,7 @@
 import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useThemeConfig } from '/@/stores/themeConfig';
-import logoMini from '/@/assets/logo-mini.png';
+import logoMini from '/@/assets/logo-rural.svg';
 
 const storesThemeConfig = useThemeConfig();
 const { themeConfig } = storeToRefs(storesThemeConfig);

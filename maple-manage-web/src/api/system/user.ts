@@ -4,14 +4,14 @@ export function useUserApi() {
     return {
         getUserInfo: () => {
             return request({
-                url: '/sso/getInfo',
+                url: '/manage/sso/getInfo',
                 method: 'get',
             });
         },
 
         getPageList(data: object) {
             return request({
-                url: '/user/getPageList',
+                url: '/manage/user/getPageList',
                 method: 'post',
                 data: data
             })
@@ -19,21 +19,21 @@ export function useUserApi() {
 
         getUserById(id: number) {
             return request({
-                url: '/user/' + id,
+                url: '/manage/user/' + id,
                 method: 'get'
             })
         },
 
         createUser(data: object) {
             return request({
-                url: '/user/createUser',
+                url: '/manage/user/createUser',
                 method: 'post',
                 data: data
             })
         },
         updateUser(data: object) {
             return request({
-                url: '/user/updateUser',
+                url: '/manage/user/updateUser',
                 method: 'post',
                 data: data
             })
@@ -41,7 +41,7 @@ export function useUserApi() {
 
         deleteUser(id: number) {
             return request({
-                url: '/user/' + id,
+                url: '/manage/user/' + id,
                 method: 'delete'
             })
         },
@@ -52,7 +52,7 @@ export function useUserApi() {
                 oldPassword
             }
             return request({
-                url: '/user/updatePwd',
+                url: '/manage/user/updatePwd',
                 method: 'put',
                 data: data
             })

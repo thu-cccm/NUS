@@ -18,7 +18,7 @@ const initQrcode = () => {
 	nextTick(() => {
 		(<HTMLElement>qrcodeRef.value).innerHTML = '';
 		new QRCode(qrcodeRef.value, {
-			text: `https:
+			text: `http://localhost:8080/login`,
 			width: 260,
 			height: 260,
 			colorDark: '#000000',

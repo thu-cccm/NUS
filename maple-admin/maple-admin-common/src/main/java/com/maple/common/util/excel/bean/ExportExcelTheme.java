@@ -1,14 +1,10 @@
 package com.maple.common.util.excel.bean;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.apache.poi.xssf.usermodel.DefaultIndexedColorMap;
 import org.apache.poi.xssf.usermodel.XSSFColor;
 
 import java.awt.*;
 
-@Getter
-@AllArgsConstructor
 public enum ExportExcelTheme {
 
     DEFAULT("DEFAULT",
@@ -61,4 +57,43 @@ public enum ExportExcelTheme {
 
     private final XSSFColor borderColor;
 
+    ExportExcelTheme(String code, XSSFColor titleBackgroundColor, XSSFColor titleFontColor,
+                     XSSFColor contentOneColor, XSSFColor contentTwoColor,
+                     XSSFColor contentFrontColor, XSSFColor borderColor) {
+        this.code = code;
+        this.titleBackgroundColor = titleBackgroundColor;
+        this.titleFontColor = titleFontColor;
+        this.contentOneColor = contentOneColor;
+        this.contentTwoColor = contentTwoColor;
+        this.contentFrontColor = contentFrontColor;
+        this.borderColor = borderColor;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public XSSFColor getTitleBackgroundColor() {
+        return titleBackgroundColor;
+    }
+
+    public XSSFColor getTitleFontColor() {
+        return titleFontColor;
+    }
+
+    public XSSFColor getContentOneColor() {
+        return contentOneColor;
+    }
+
+    public XSSFColor getContentTwoColor() {
+        return contentTwoColor;
+    }
+
+    public XSSFColor getContentFrontColor() {
+        return contentFrontColor;
+    }
+
+    public XSSFColor getBorderColor() {
+        return borderColor;
+    }
 }

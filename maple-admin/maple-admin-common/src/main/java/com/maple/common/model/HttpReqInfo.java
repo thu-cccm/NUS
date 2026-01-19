@@ -32,4 +32,52 @@ public class HttpReqInfo {
         this.param = param;
         this.value = value;
     }
+
+    public boolean isHeader() {
+        return header;
+    }
+
+    public void setHeader(boolean header) {
+        this.header = header;
+    }
+
+    public boolean isFile() {
+        return file;
+    }
+
+    public void setFile(boolean file) {
+        this.file = file;
+    }
+
+    public String getParam() {
+        return param;
+    }
+
+    public void setParam(String param) {
+        this.param = param;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
 }

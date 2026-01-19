@@ -6,7 +6,7 @@ export const useThemeConfig = defineStore('themeConfig', {
 
 			isDrawer: false,
 
-			primary: '#409eff',
+			primary: '#4CAF50',
 
 			isIsDark: false,
 
@@ -72,7 +72,7 @@ export const useThemeConfig = defineStore('themeConfig', {
 
 			isWartermark: false,
 
-			wartermarkText: '笑小枫',
+			wartermarkText: '新农村建设信息管理系统',
 
 			tagsStyle: 'tags-style-five',
 
@@ -86,11 +86,11 @@ export const useThemeConfig = defineStore('themeConfig', {
 
 			isRequestRoutes: true,
 
-			globalTitle: '笑小枫',
+			globalTitle: '新农村建设信息管理系统',
 
-			globalViceTitle: '笑小枫',
+			globalViceTitle: '新农村数字化治理平台',
 
-			globalViceTitleMsg: '专注、免费、开源、维护、解疑',
+			globalViceTitleMsg: '乡村治理 · 数据赋能 · 服务便民',
 
 			globalI18n: 'zh-cn',
 

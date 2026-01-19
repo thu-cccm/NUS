@@ -5,28 +5,28 @@ export function useRoleApi() {
 
         getPageList(data: object) {
             return request({
-                url: '/system/role/getPageList',
+                url: '/manage/system/role/getPageList',
                 method: 'post',
                 data: data
             })
         },
         getRoleList() {
             return request({
-                url: '/system/role/getRoleList',
+                url: '/manage/system/role/getRoleList',
                 method: 'post',
             })
         },
 
         getRoleById(id: number) {
             return request({
-                url: '/system/role/' + id,
+                url: '/manage/system/role/' + id,
                 method: 'get'
             })
         },
 
         createRole(data: object) {
             return request({
-                url: '/system/role/createRole',
+                url: '/manage/system/role/createRole',
                 method: 'post',
                 data: data
             })
@@ -34,7 +34,7 @@ export function useRoleApi() {
 
         updateRole(data: object) {
             return request({
-                url: '/system/role/updateRole',
+                url: '/manage/system/role/updateRole',
                 method: 'post',
                 data: data
             })
@@ -42,7 +42,7 @@ export function useRoleApi() {
 
         deleteRole(id: number) {
             return request({
-                url: '/system/role/' + id,
+                url: '/manage/system/role/' + id,
                 method: 'delete'
             })
         },
