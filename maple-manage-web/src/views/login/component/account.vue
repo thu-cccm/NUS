@@ -1,7 +1,7 @@
 <template>
 	<el-form size="large" class="login-content-form">
 		<el-form-item class="login-animation1">
-			<el-input text :placeholder="$t('message.account.accountPlaceholder1')" v-model="state.ruleForm.account" clearable autocomplete="off">
+			<el-input text :placeholder="$t('message.account.accountPlaceholder1')" v-model="state.ruleForm.account" clearable autocomplete="new-password">
 				<template #prefix>
 					<el-icon class="el-input__icon"><ele-User /></el-icon>
 				</template>
@@ -12,7 +12,7 @@
 				:type="state.isShowPassword ? 'text' : 'password'"
 				:placeholder="$t('message.account.accountPlaceholder2')"
 				v-model="state.ruleForm.password"
-				autocomplete="off"
+				autocomplete="new-password"
 			>
 				<template #prefix>
 					<el-icon class="el-input__icon"><ele-Unlock /></el-icon>
@@ -81,9 +81,9 @@ const loginApi = useLoginApi();
 const state = reactive({
 	isShowPassword: false,
 	ruleForm: {
-		account: 'admin',
-		password: '123456',
-		code: '1234',
+		account: '',
+		password: '',
+		code: '',
 	},
 	loading: {
 		signIn: false,

@@ -32,10 +32,7 @@ export default {
 		dropdownSmall: '小型',
 		dropdown1: '首页',
 		dropdown2: '个人中心',
-		dropdown3: '404',
-		dropdown4: '401',
 		dropdown5: '退出登录',
-		dropdown6: '代码仓库',
 		searchPlaceholder: '菜单搜索：支持中文、路由路径',
 		newTitle: '通知',
 		newBtn: '全部已读',
@@ -62,7 +59,7 @@ export default {
 	},
 	noAccess: {
 		accessTitle: '您未被授权，没有操作权限~',
-		accessMsg: '联系方式：加QQ群探讨 665452019',
+		accessMsg: '请联系管理员',
 		accessBtn: '重新授权',
 	},
 	layout: {

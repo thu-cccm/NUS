@@ -173,18 +173,9 @@ export const notFoundAndNoPower = [
     {
         path: '/:path(.*)*',
         name: 'notFound',
-        component: () => import('/@/views/error/404.vue'),
+        redirect: '/home',
         meta: {
             title: 'message.staticRoutes.notFound',
-            isHide: true,
-        },
-    },
-    {
-        path: '/401',
-        name: 'noPower',
-        component: () => import('/@/views/error/401.vue'),
-        meta: {
-            title: 'message.staticRoutes.noPower',
             isHide: true,
         },
     },
