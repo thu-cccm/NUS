@@ -25,7 +25,8 @@
 				</el-form>
 			</div>
 			<el-row>
-				<el-button type="success" plain @click="openDialog('add')">新增</el-button>
+				<el-button type="primary" @click="openDialog('add')">新增</el-button>
+				<el-button @click="exportLand">导出CSV</el-button>
 			</el-row>
 			<el-table :data="state.tableData.records" v-loading="state.tableData.loading" style="width: 100%">
 				<el-table-column type="index" label="序号" width="60" />
@@ -205,6 +206,14 @@ const onHandleSizeChange = (val: number) => {
 const onHandleCurrentChange = (val: number) => {
 	state.tableData.param.page.current = val;
 	getTableData();
+};
+
+const exportLand = () => {
+	const params: any = {};
+	if (state.tableData.param.query.landCode) params.landCode = state.tableData.param.query.landCode;
+	if (state.tableData.param.query.type) params.type = state.tableData.param.query.type;
+	if (state.tableData.param.query.status !== '' && state.tableData.param.query.status !== null) params.status = state.tableData.param.query.status;
+	landApi.export(params);
 };
 
 onMounted(() => {

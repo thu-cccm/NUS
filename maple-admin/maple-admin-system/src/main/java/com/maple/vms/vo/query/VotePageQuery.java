@@ -8,14 +8,14 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 /**
  * 民主互动分页请求对象.
  */
 @Data
 @Builder
-@RequiredArgsConstructor
+@NoArgsConstructor
 @AllArgsConstructor
 @ApiModel(value = "民主互动分页请求对象", description = "vms-民主互动分页请求对象")
 public class VotePageQuery {

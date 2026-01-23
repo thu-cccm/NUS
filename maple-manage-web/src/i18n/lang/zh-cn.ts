@@ -1,14 +1,10 @@
 export default {
 	router: {
 		home: '首页',
-		system: '系统设置',
-		systemMenu: '菜单管理',
+		system: '基础设置',
 		systemRole: '角色管理',
 		systemUser: '用户管理',
 		systemDept: '部门管理',
-		systemDic: '字典管理',
-		tool: '系统工具',
-		toolGen: '代码生成',
 		blog: '博客管理',
 		blogArticle: '文章管理',
 		blogCategory: '类目管理',

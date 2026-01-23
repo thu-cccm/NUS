@@ -30,14 +30,14 @@ const onThemeConfigChange = () => {
 
 <style scoped lang="scss">
 .layout-logo {
-	width: 220px;
-	height: 50px;
+	width: 240px;
+	height: 56px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	box-shadow: rgb(0 21 41 / 2%) 0px 1px 4px;
 	color: var(--el-color-primary);
-	font-size: 16px;
+	font-size: 18px;
 	cursor: pointer;
 	animation: logoAnimation 0.3s ease-in-out;
 	span {
@@ -47,16 +47,15 @@ const onThemeConfigChange = () => {
 	&:hover {
 		span {
 			color: var(--color-primary-light-2);
-		}
 	}
 	&-medium-img {
-		width: 25px;
+		width: 28px;
 		margin-right: 5px;
 	}
 }
 .layout-logo-size {
 	width: 100%;
-	height: 50px;
+	height: 56px;
 	display: flex;
 	cursor: pointer;
 	animation: logoAnimation 0.3s ease-in-out;

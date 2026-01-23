@@ -66,6 +66,11 @@ CREATE TABLE IF NOT EXISTS `vms_apply` (
   `content` text COMMENT '申请详细描述',
   `proof_files` text COMMENT '佐证材料图片链接',
   `status` tinyint(4) DEFAULT 0 COMMENT '状态(0待审核,1已通过,2已驳回)',
+  `public_status` tinyint(4) DEFAULT 0 COMMENT '公示状态(0未公示,1公示中,2已公示)',
+  `public_start` datetime DEFAULT NULL COMMENT '公示开始时间',
+  `public_end` datetime DEFAULT NULL COMMENT '公示截止时间',
+  `archive_status` tinyint(4) DEFAULT 0 COMMENT '归档状态(0未归档,1已归档)',
+  `archive_time` datetime DEFAULT NULL COMMENT '归档时间',
   `audit_by` varchar(20) DEFAULT NULL COMMENT '审核人姓名',
   `audit_reply` varchar(255) DEFAULT NULL COMMENT '审核意见/驳回理由',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
@@ -79,12 +84,73 @@ CREATE TABLE IF NOT EXISTS `vms_vote` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `title` varchar(100) DEFAULT NULL COMMENT '议题标题',
   `content` text COMMENT '议题详情',
+  `is_anonymous` tinyint(4) DEFAULT 0 COMMENT '是否匿名(0否,1是)',
   `agree_count` int(11) DEFAULT 0 COMMENT '赞成票数',
   `disagree_count` int(11) DEFAULT 0 COMMENT '反对票数',
   `end_time` datetime DEFAULT NULL COMMENT '截止时间',
   `status` tinyint(4) DEFAULT 0 COMMENT '状态(0进行中,1已结束)',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='民主互动表';
+
+DROP TABLE IF EXISTS `vms_vote_record`;
+
+CREATE TABLE IF NOT EXISTS `vms_vote_record` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `vote_id` bigint(20) NOT NULL COMMENT '投票ID',
+  `resident_id` bigint(20) NOT NULL COMMENT '村民ID',
+  `agree` tinyint(1) DEFAULT NULL COMMENT '是否赞成',
+  `create_time` datetime DEFAULT NULL COMMENT '投票时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_vote_resident` (`vote_id`,`resident_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='投票记录表';
+
+DROP TABLE IF EXISTS `vms_notice`;
+
+CREATE TABLE IF NOT EXISTS `vms_notice` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `title` varchar(120) DEFAULT NULL COMMENT '标题',
+  `content` text COMMENT '内容',
+  `type` varchar(20) DEFAULT NULL COMMENT '类型(通知/公示/政策)',
+  `policy_file` varchar(255) DEFAULT NULL COMMENT '政策附件(文件服务名)',
+  `policy_category` varchar(50) DEFAULT NULL COMMENT '政策分类',
+  `expire_time` datetime DEFAULT NULL COMMENT '过期时间',
+  `archive_status` tinyint(4) DEFAULT 0 COMMENT '归档状态(0未归档,1已归档)',
+  `target_group` varchar(20) DEFAULT 'all' COMMENT '推送对象(all/party/poor)',
+  `is_top` tinyint(4) DEFAULT 0 COMMENT '是否置顶(0否,1是)',
+  `status` tinyint(4) DEFAULT 1 COMMENT '状态(0草稿,1发布)',
+  `create_id` bigint(20) DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_id` bigint(20) DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='通知公告表';
+
+DROP TABLE IF EXISTS `vms_notice_read`;
+
+CREATE TABLE IF NOT EXISTS `vms_notice_read` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `notice_id` bigint(20) NOT NULL COMMENT '公告ID',
+  `resident_id` bigint(20) NOT NULL COMMENT '村民ID',
+  `read_time` datetime DEFAULT NULL COMMENT '阅读时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_notice_resident` (`notice_id`,`resident_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='公告阅读记录表';
+
+DROP TABLE IF EXISTS `vms_feedback`;
+
+CREATE TABLE IF NOT EXISTS `vms_feedback` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `content` varchar(500) DEFAULT NULL COMMENT '留言内容',
+  `is_public` tinyint(4) DEFAULT 1 COMMENT '是否公开(0否,1是)',
+  `reply_content` varchar(500) DEFAULT NULL COMMENT '回复内容',
+  `reply_time` datetime DEFAULT NULL COMMENT '回复时间',
+  `report_count` int(11) DEFAULT 0 COMMENT '举报次数',
+  `is_hidden` tinyint(4) DEFAULT 0 COMMENT '是否隐藏(0否,1是)',
+  `resident_id` bigint(20) DEFAULT NULL COMMENT '留言人ID',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='村民互动留言表';
 
 INSERT INTO `vms_resident` (`id`, `real_name`, `id_card`, `gender`, `age`, `phone`, `group_no`, `politics`, `is_poor`, `health_status`, `create_time`) VALUES
 
@@ -954,10 +1020,53 @@ INSERT INTO `vms_apply` (`id`, `resident_id`, `apply_type`, `content`, `proof_fi
 (59, 2, '户口迁移', '申请宅基地确权', '', 1, 'admin', '信息核验无误，予以审批', '2026-01-16 17:27:06', '2026-01-19 17:27:06'),
 (60, 178, '户口迁移', '办理户口迁移手续', '', 1, 'admin', '信息核验无误，予以审批', '2025-08-04 17:27:06', '2025-08-16 17:27:06');
 
-INSERT INTO `vms_vote` (`id`, `title`, `content`, `agree_count`, `disagree_count`, `end_time`, `status`) VALUES
+INSERT INTO `vms_vote` (`id`, `title`, `content`, `is_anonymous`, `agree_count`, `disagree_count`, `end_time`, `status`) VALUES
 
-(1, '村道路灯安装方案表决', '请村民依据实际情况投票表决。', 99, 28, '2026-02-02 17:27:06', 1),
-(2, '村规民约修订意见', '请村民依据实际情况投票表决。', 108, 30, '2026-02-14 17:27:06', 0),
-(3, '公共卫生间选址讨论', '请村民依据实际情况投票表决。', 36, 13, '2026-01-26 17:27:06', 0),
-(4, '农机补贴公示', '请村民依据实际情况投票表决。', 34, 6, '2026-01-30 17:27:06', 1),
-(5, '村务公开平台建设', '请村民依据实际情况投票表决。', 23, 18, '2026-01-30 17:27:06', 0);
+(1, '村道路灯安装方案表决', '请村民依据实际情况投票表决。', 0, 99, 28, '2026-02-02 17:27:06', 1),
+(2, '村规民约修订意见', '请村民依据实际情况投票表决。', 1, 108, 30, '2026-02-14 17:27:06', 0),
+(3, '公共卫生间选址讨论', '请村民依据实际情况投票表决。', 0, 36, 13, '2026-01-26 17:27:06', 0),
+(4, '农机补贴公示', '请村民依据实际情况投票表决。', 0, 34, 6, '2026-01-30 17:27:06', 1),
+(5, '村务公开平台建设', '请村民依据实际情况投票表决。', 1, 23, 18, '2026-01-30 17:27:06', 0);
+
+INSERT INTO `vms_notice` (`id`, `title`, `content`, `type`, `policy_file`, `policy_category`, `expire_time`, `archive_status`, `target_group`, `is_top`, `status`, `create_id`, `create_time`, `update_id`, `update_time`) VALUES
+(1, '春节期间用电安全提示', '春节临近，请注意用电安全，发现隐患及时报修。', '通知', NULL, NULL, NULL, 0, 'all', 1, 1, 1, '2026-01-05 09:10:00', 1, '2026-01-05 09:10:00'),
+(2, '村务财务收支公示', '本季度村务收支情况已公开，请村民查看。', '公示', NULL, NULL, NULL, 0, 'all', 0, 1, 1, '2026-01-08 10:00:00', 1, '2026-01-08 10:00:00'),
+(3, '党员学习活动安排', '下周三开展党员集中学习活动。', '通知', NULL, NULL, NULL, 0, 'party', 0, 1, 1, '2026-01-10 14:00:00', 1, '2026-01-10 14:00:00'),
+(4, '困难户补助政策解读', '请符合条件的困难户准备材料，尽快提交申请。', '政策', NULL, '补贴政策', '2026-12-31 23:59:59', 0, 'poor', 0, 1, 1, '2026-01-12 15:30:00', 1, '2026-01-12 15:30:00'),
+(5, '停水通知', '本周六上午9:00-12:00停水维护。', '通知', NULL, NULL, NULL, 0, 'all', 1, 1, 1, '2026-01-15 08:00:00', 1, '2026-01-15 08:00:00');
+
+INSERT INTO `vms_feedback` (`id`, `content`, `is_public`, `reply_content`, `reply_time`, `resident_id`, `create_time`, `update_time`) VALUES
+(1, '村口路灯坏了，希望尽快维修。', 1, '已安排维修人员本周内处理。', '2026-01-12 09:30:00', 12, '2026-01-10 18:20:00', '2026-01-12 09:30:00'),
+(2, '建议增加农家书屋开放时间。', 1, NULL, NULL, 35, '2026-01-11 13:40:00', '2026-01-11 13:40:00'),
+(3, '村道有积水影响通行。', 1, '已反馈给工程队处理。', '2026-01-13 16:00:00', 7, '2026-01-12 09:15:00', '2026-01-13 16:00:00'),
+(4, '村务公告能否增加短信通知？', 1, NULL, NULL, 58, '2026-01-12 20:05:00', '2026-01-12 20:05:00'),
+(5, '垃圾分类桶数量不够。', 1, '已申请新增分类桶。', '2026-01-14 10:10:00', 103, '2026-01-13 11:25:00', '2026-01-14 10:10:00'),
+(6, '道路施工噪音影响休息。', 0, NULL, NULL, 22, '2026-01-14 22:30:00', '2026-01-14 22:30:00');
+
+INSERT INTO `vms_vote_record` (`id`, `vote_id`, `resident_id`, `agree`, `create_time`) VALUES
+(1, 1, 12, 1, '2026-01-08 10:00:00'),
+(2, 1, 35, 1, '2026-01-08 10:05:00'),
+(3, 2, 7, 0, '2026-01-09 09:10:00'),
+(4, 2, 58, 1, '2026-01-09 09:12:00'),
+(5, 3, 22, 1, '2026-01-10 14:00:00'),
+(6, 3, 103, 0, '2026-01-10 14:05:00'),
+(7, 4, 12, 1, '2026-01-11 16:00:00'),
+(8, 4, 35, 1, '2026-01-11 16:10:00'),
+(9, 5, 7, 0, '2026-01-12 11:20:00'),
+(10, 5, 58, 1, '2026-01-12 11:25:00');
+
+INSERT INTO `usc_menu` (`id`, `name`, `title`, `menu_type`, `parent_id`, `ancestors`, `sort_num`, `path`, `component`, `redirect`, `link_url`, `is_link`, `is_iframe`, `is_keep_alive`, `is_hide`, `is_affix`, `status`, `perms`, `icon`, `remark`, `create_id`, `create_time`, `update_id`, `update_time`) VALUES
+(30, 'vms', '村务管理', 'M', 0, '', 5, '/vms', 'vms/resident/index', '/vms/resident', '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-shuju', '', 1, now(), 1, now()),
+(31, 'vmsResident', '人口档案', 'C', 30, '30', 1, '/vms/resident', 'vms/resident/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-user', '', 1, now(), 1, now()),
+(32, 'vmsLand', '土地资源', 'C', 30, '30', 2, '/vms/land', 'vms/land/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-shujuzhongxin', '', 1, now(), 1, now()),
+(33, 'vmsAgriculture', '农业生产', 'C', 30, '30', 3, '/vms/agriculture', 'vms/agriculture/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-qiye', '', 1, now(), 1, now()),
+(34, 'vmsInfrastructure', '基础设施', 'C', 30, '30', 4, '/vms/infrastructure', 'vms/infrastructure/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-gongsi', '', 1, now(), 1, now()),
+(35, 'vmsApply', '事务申请', 'C', 30, '30', 5, '/vms/apply', 'vms/apply/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-banshi', '', 1, now(), 1, now()),
+(36, 'vmsVote', '民主议事', 'C', 30, '30', 6, '/vms/vote', 'vms/vote/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-toupiao', '', 1, now(), 1, now()),
+(37, 'vmsNotice', '通知公告', 'C', 30, '30', 7, '/vms/notice', 'vms/notice/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-tongzhi', '', 1, now(), 1, now()),
+(38, 'vmsPolicy', '政策库', 'C', 30, '30', 8, '/vms/policy', 'vms/policy/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-zhengce', '', 1, now(), 1, now()),
+(39, 'vmsFeedback', '互动墙', 'C', 30, '30', 9, '/vms/feedback', 'vms/feedback/index', NULL, '', 0, 0, 1, 0, 0, 1, '', 'iconfont icon-liuyan', '', 1, now(), 1, now());
+
+INSERT INTO `usc_role_menu` (`role_id`, `menu_id`) VALUES
+(1, 30),(1, 31),(1, 32),(1, 33),(1, 34),(1, 35),(1, 36),(1, 37),(1, 38),(1, 39),
+(3, 30),(3, 31),(3, 32),(3, 33),(3, 34),(3, 35),(3, 36),(3, 37),(3, 38),(3, 39);

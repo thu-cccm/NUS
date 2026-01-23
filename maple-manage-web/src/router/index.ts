@@ -7,7 +7,7 @@ import { useKeepALiveNames } from '/@/stores/keepAliveNames';
 import { useRoutesList } from '/@/stores/routesList';
 import { useThemeConfig } from '/@/stores/themeConfig';
 import { Session } from '/@/utils/storage';
-import { staticRoutes, notFoundAndNoPower } from '/@/router/route';
+import { staticRoutes } from '/@/router/route';
 import { initFrontEndControlRoutes } from '/@/router/frontEnd';
 import { initBackEndControlRoutes } from '/@/router/backEnd';
 
@@ -18,7 +18,7 @@ const { isRequestRoutes } = themeConfig.value;
 export const router = createRouter({
 	history: createWebHashHistory(),
 
-	routes: [...notFoundAndNoPower, ...staticRoutes],
+	routes: [...staticRoutes],
 });
 
 export function formatFlatteningRoutes(arr: any) {

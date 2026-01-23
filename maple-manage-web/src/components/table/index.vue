@@ -46,7 +46,7 @@
 				</template>
 			</el-table-column>
 			<template #empty>
-				<el-empty description="暂无数据" />
+				<el-empty description="暂无相关记录" />
 			</template>
 		</el-table>
 		<div class="table-footer mt15">

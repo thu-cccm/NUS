@@ -33,5 +33,8 @@ public class AgricultureModel {
 
     @ApiModelProperty(value = "预估单价")
     private BigDecimal marketPrice;
+
+    @ApiModelProperty(value = "预估产值(元)")
+    private BigDecimal estimatedValue;
 }
 

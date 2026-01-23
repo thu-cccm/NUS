@@ -5,7 +5,6 @@ export default {
 	},
 	link: {
 		one3: '第三方登录',
-		two4: '友情链接',
 	},
 	account: {
 		accountPlaceholder1: '请输入用户账号',
@@ -18,7 +17,6 @@ export default {
 		placeholder2: '请输入验证码',
 		codeText: '获取验证码',
 		btnText: '登 录',
-		msgText: '* 温馨提示：建议使用谷歌、Microsoft Edge，版本 79.0.1072.62 及以上浏览器，360浏览器请使用极速模式',
 	},
 	scan: {
 		text: '打开手机扫一扫，查看系统使用说明',

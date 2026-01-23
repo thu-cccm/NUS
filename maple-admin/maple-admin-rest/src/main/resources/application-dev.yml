@@ -5,9 +5,9 @@ spring:
       strict: false #严格匹配数据源,默认false. true未匹配到指定数据源时抛异常,false使用默认数据源
       datasource:
         tian:
-          url: jdbc:mysql://127.0.0.1:3306/maple-boot?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull&characterSetResults=UTF-8&connectionCollation=utf8mb4_unicode_ci
-          username: root
-          password: 
+          url: jdbc:mysql://127.0.0.1:3306/maple-boot?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull&characterSetResults=UTF-8&connectionCollation=utf8mb4_unicode_ci&connectTimeout=5000&socketTimeout=30000
+          username: admin
+          password: admin@120 
           driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:

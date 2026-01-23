@@ -590,20 +590,20 @@ watch(
 		list-style: none;
 		margin: 0;
 		padding: 0;
-		height: 34px;
+		height: 40px;
 		display: flex;
 		align-items: center;
 		color: var(--el-text-color-regular);
-		font-size: 12px;
+		font-size: 14px;
 		white-space: nowrap;
 		padding: 0 15px;
 		&-li {
-			height: 26px;
-			line-height: 26px;
+			height: 30px;
+			line-height: 30px;
 			display: flex;
 			align-items: center;
 			border: 1px solid var(--el-border-color-lighter);
-			padding: 0 15px;
+			padding: 0 16px;
 			margin-right: 5px;
 			border-radius: 2px;
 			position: relative;
@@ -611,7 +611,7 @@ watch(
 			cursor: pointer;
 			justify-content: space-between;
 			&:hover {
-				background-color: var(--el-color-primary-light-9);
+				background-color: var(--el-color-primary-light-8);
 				color: var(--el-color-primary);
 				border-color: var(--el-color-primary-light-5);
 			}
@@ -641,10 +641,10 @@ watch(
 			}
 		}
 		.is-active {
-			color: var(--el-color-white);
-			background: var(--el-color-primary);
-			border-color: var(--el-color-primary);
-			transition: border-color 3s ease;
+			color: var(--el-color-primary);
+			background: var(--el-color-primary-light-8);
+			border-color: var(--el-color-primary-light-5);
+			transition: border-color 0.3s ease;
 		}
 	}
 

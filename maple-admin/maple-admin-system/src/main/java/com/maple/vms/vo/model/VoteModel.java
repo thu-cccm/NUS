@@ -22,6 +22,9 @@ public class VoteModel {
     @ApiModelProperty(value = "议题详情")
     private String content;
 
+    @ApiModelProperty(value = "是否匿名(0否,1是)")
+    private Integer isAnonymous;
+
     @ApiModelProperty(value = "赞成票数")
     private Integer agreeCount;
 
@@ -33,5 +36,8 @@ public class VoteModel {
 
     @ApiModelProperty(value = "状态(0进行中,1已结束)")
     private Integer status;
+
+    @ApiModelProperty(value = "是否已投票")
+    private Boolean voted;
 }
 

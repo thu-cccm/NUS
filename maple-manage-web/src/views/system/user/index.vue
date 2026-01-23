@@ -3,7 +3,7 @@
     <el-card shadow="hover" class="layout-padding-auto">
       <div class="system-user-search">
         <el-form :inline="true" ref="userSearchRef" :model="state.tableData.param.query" size="default">
-          <el-row>
+          <el-row class="system-user-search-row">
             <el-form-item label="用户账号" class="ml20" size="default">
               <el-input v-model="state.tableData.param.query.account" placeholder="请输入用户账号" clearable
                         style="max-width: 180px"></el-input>
@@ -46,14 +46,12 @@
             <el-button size="default" class="ml20" @click="resetQuery">
               <el-icon><ele-Refresh /></el-icon> 重置
             </el-button>
+            <el-button size="default" type="primary" class="ml20" @click="onOpenAdd('add')">
+              <el-icon><ele-FolderAdd /></el-icon> 新增
+            </el-button>
           </el-row>
         </el-form>
       </div>
-      <el-row :gutter="35">
-        <el-button size="default" type="success" plain class="ml30" @click="onOpenAdd('add')">
-          <el-icon><ele-FolderAdd /></el-icon> 新增
-        </el-button>
-      </el-row>
       <el-table :data="state.tableData.records" v-loading="state.tableData.loading" style="width: 100%">
         <el-table-column type="index" label="序号" width="60" />
         <el-table-column label="用户账号" prop="account" show-overflow-tooltip/>

@@ -6,6 +6,8 @@ import com.maple.vms.bean.Land;
 import com.maple.vms.vo.model.LandModel;
 import com.maple.vms.vo.query.LandPageQuery;
 
+import java.util.List;
+
 /**
  * 土地资源服务接口.
  */
@@ -18,6 +20,14 @@ public interface IVmsLandService extends IService<Land> {
      * @return 分页结果
      */
     IPage<LandModel> getPageList(LandPageQuery query);
+
+    /**
+     * 获取土地列表（不分页，用于导出）.
+     *
+     * @param query 查询条件
+     * @return 土地列表
+     */
+    List<LandModel> getList(LandPageQuery query);
 
     /**
      * 根据ID获取土地信息.

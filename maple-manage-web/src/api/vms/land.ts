@@ -35,6 +35,14 @@ export function useVmsLandApi() {
 				method: 'delete',
 			});
 		},
+		export(params: object) {
+			return request({
+				url: '/manage/vms/land/export',
+				method: 'get',
+				params,
+				responseType: 'blob',
+			});
+		},
 	};
 }
 

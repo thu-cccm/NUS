@@ -49,6 +49,35 @@ export function useVmsVoteApi() {
 				params: { id },
 			});
 		},
+		getRecords(id: number, params?: { agree?: boolean; keyword?: string }) {
+			return request({
+				url: '/manage/vms/vote/records',
+				method: 'get',
+				params: { id, ...params },
+			});
+		},
+		getTrend(id: number, days = 7, unit = 'day') {
+			return request({
+				url: '/manage/vms/vote/trend',
+				method: 'get',
+				params: { id, days, unit },
+			});
+		},
+		getRecordPage(params: { id: number; current: number; size: number; agree?: boolean; keyword?: string }) {
+			return request({
+				url: '/manage/vms/vote/records/page',
+				method: 'get',
+				params,
+			});
+		},
+		exportRecords(params: { id: number; agree?: boolean; keyword?: string }) {
+			return request({
+				url: '/manage/vms/vote/records/export',
+				method: 'get',
+				params,
+				responseType: 'blob',
+			});
+		},
 	};
 }
 

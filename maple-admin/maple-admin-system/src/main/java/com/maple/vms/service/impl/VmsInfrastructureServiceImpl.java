@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -36,6 +37,18 @@ public class VmsInfrastructureServiceImpl extends ServiceImpl<InfrastructureMapp
                 .eq(StringUtils.isNotBlank(status), Infrastructure::getStatus, status)
                 .orderByDesc(Infrastructure::getId));
         return toModelPage(result, InfrastructureModel.class);
+    }
+
+    @Override
+    public List<InfrastructureModel> getList(InfrastructurePageQuery query) {
+        InfrastructureModel model = Objects.isNull(query) ? null : query.getQuery();
+        String projectName = model == null ? null : model.getProjectName();
+        String status = model == null ? null : model.getStatus();
+        List<Infrastructure> list = infrastructureMapper.selectList(Wrappers.lambdaQuery(Infrastructure.class)
+                .like(StringUtils.isNotBlank(projectName), Infrastructure::getProjectName, projectName)
+                .eq(StringUtils.isNotBlank(status), Infrastructure::getStatus, status)
+                .orderByDesc(Infrastructure::getId));
+        return TransformUtils.mapList(list, InfrastructureModel.class);
     }
 
     @Override

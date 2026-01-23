@@ -1,14 +1,10 @@
 export default {
 	router: {
 		home: 'home',
-		system: 'system',
-		systemMenu: 'systemMenu',
+		system: 'basicSettings',
 		systemRole: 'systemRole',
 		systemUser: 'systemUser',
 		systemDept: 'systemDept',
-		systemDic: 'systemDic',
-		tool: 'tool',
-		toolGen: 'toolGenerate',
 		blog: 'blog',
 		blogArticle: 'blogArticle',
 		blogCategory: 'blogCategory',

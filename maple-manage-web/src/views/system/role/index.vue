@@ -45,7 +45,7 @@
         </el-form>
       </div>
       <el-row :gutter="35">
-        <el-button size="default" type="success" plain class="ml30" @click="onOpenAdd('add')">
+        <el-button size="default" type="primary" class="ml30" @click="onOpenAdd('add')">
           <el-icon><ele-FolderAdd /></el-icon> 新增
         </el-button>
       </el-row>

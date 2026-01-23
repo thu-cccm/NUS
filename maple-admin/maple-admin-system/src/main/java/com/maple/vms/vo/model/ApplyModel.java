@@ -31,6 +31,21 @@ public class ApplyModel {
     @ApiModelProperty(value = "状态(0待审核,1已通过,2已驳回)")
     private Integer status;
 
+    @ApiModelProperty(value = "公示状态(0未公示,1公示中,2已公示)")
+    private Integer publicStatus;
+
+    @ApiModelProperty(value = "公示开始时间")
+    private Date publicStart;
+
+    @ApiModelProperty(value = "公示截止时间")
+    private Date publicEnd;
+
+    @ApiModelProperty(value = "归档状态(0未归档,1已归档)")
+    private Integer archiveStatus;
+
+    @ApiModelProperty(value = "归档时间")
+    private Date archiveTime;
+
     @ApiModelProperty(value = "审核人姓名")
     private String auditBy;
 

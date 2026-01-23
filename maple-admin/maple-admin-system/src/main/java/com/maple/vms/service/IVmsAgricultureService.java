@@ -6,6 +6,8 @@ import com.maple.vms.bean.Agriculture;
 import com.maple.vms.vo.model.AgricultureModel;
 import com.maple.vms.vo.query.AgriculturePageQuery;
 
+import java.util.List;
+
 /**
  * 农业生产服务接口.
  */
@@ -18,6 +20,14 @@ public interface IVmsAgricultureService extends IService<Agriculture> {
      * @return 分页结果
      */
     IPage<AgricultureModel> getPageList(AgriculturePageQuery query);
+
+    /**
+     * 获取农业生产列表（不分页，用于导出）.
+     *
+     * @param query 查询条件
+     * @return 农业生产列表
+     */
+    List<AgricultureModel> getList(AgriculturePageQuery query);
 
     /**
      * 根据ID获取农业生产信息.

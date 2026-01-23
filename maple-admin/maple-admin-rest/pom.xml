@@ -43,10 +43,6 @@
             <artifactId>maple-admin-system</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.maple</groupId>
-            <artifactId>maple-admin-generator</artifactId>
-        </dependency>
 
     </dependencies>
 

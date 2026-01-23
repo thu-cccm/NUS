@@ -29,6 +29,13 @@ export function useVmsApplyApi() {
 				data,
 			});
 		},
+		resubmit(data: object) {
+			return request({
+				url: '/manage/vms/apply/resubmit',
+				method: 'post',
+				data,
+			});
+		},
 		delete(id: number) {
 			return request({
 				url: `/manage/vms/apply/${id}`,
@@ -40,6 +47,21 @@ export function useVmsApplyApi() {
 				url: '/manage/vms/apply/audit',
 				method: 'post',
 				data,
+			});
+		},
+		archive(id: number, archiveStatus: number) {
+			return request({
+				url: '/manage/vms/apply/archive',
+				method: 'post',
+				params: { id, archiveStatus },
+			});
+		},
+		export(params: { status?: number; publicStatus?: number; archiveStatus?: number; applyType?: string }) {
+			return request({
+				url: '/manage/vms/apply/export',
+				method: 'get',
+				params,
+				responseType: 'blob',
 			});
 		},
 	};

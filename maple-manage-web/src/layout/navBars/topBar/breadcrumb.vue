@@ -1,5 +1,6 @@
 <template>
 	<div v-if="isShowBreadcrumb" class="layout-navbars-breadcrumb">
+		<span class="layout-navbars-breadcrumb-label">当前位置</span>
 		<SvgIcon
 			class="layout-navbars-breadcrumb-icon"
 			:name="themeConfig.isCollapse ? 'ele-Expand' : 'ele-Fold'"
@@ -109,12 +110,18 @@ onBeforeRouteUpdate((to) => {
 	height: inherit;
 	display: flex;
 	align-items: center;
+	font-size: 14px;
+	.layout-navbars-breadcrumb-label {
+		color: var(--next-bg-topBarColor);
+		margin-right: 8px;
+		font-weight: 600;
+	}
 	.layout-navbars-breadcrumb-icon {
 		cursor: pointer;
-		font-size: 18px;
+		font-size: 20px;
 		color: var(--next-bg-topBarColor);
 		height: 100%;
-		width: 40px;
+		width: 44px;
 		opacity: 0.8;
 		&:hover {
 			opacity: 1;
@@ -122,7 +129,7 @@ onBeforeRouteUpdate((to) => {
 	}
 	.layout-navbars-breadcrumb-span {
 		display: flex;
-		opacity: 0.7;
+		opacity: 0.85;
 		color: var(--next-bg-topBarColor);
 	}
 	.layout-navbars-breadcrumb-iconfont {

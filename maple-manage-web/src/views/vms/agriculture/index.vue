@@ -14,7 +14,7 @@
 				</el-form>
 			</div>
 			<el-row>
-				<el-button type="success" plain @click="openDialog('add')">新增</el-button>
+				<el-button type="primary" @click="openDialog('add')">新增</el-button>
 			</el-row>
 			<el-table :data="state.tableData.records" v-loading="state.tableData.loading" style="width: 100%">
 				<el-table-column type="index" label="序号" width="60" />

@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 农村人口档案展示模型.
@@ -42,6 +43,27 @@ public class ResidentModel {
 
     @ApiModelProperty(value = "健康状况")
     private String healthStatus;
+
+    @ApiModelProperty(value = "户号")
+    private String familyId;
+
+    @ApiModelProperty(value = "是否户主(0否,1是)")
+    private Integer isHouseholder;
+
+    @ApiModelProperty(value = "特殊人群标记(JSON数组)")
+    private String tags;
+
+    @ApiModelProperty(value = "特殊人群标记列表(前端使用)")
+    private List<String> tagList;
+
+    @ApiModelProperty(value = "迁移状态(在村/迁入/迁出)")
+    private String migrateStatus;
+
+    @ApiModelProperty(value = "迁出地")
+    private String migrateTo;
+
+    @ApiModelProperty(value = "迁出/迁入时间")
+    private Date migrateTime;
 
     @ApiModelProperty(value = "创建时间")
     private Date createTime;

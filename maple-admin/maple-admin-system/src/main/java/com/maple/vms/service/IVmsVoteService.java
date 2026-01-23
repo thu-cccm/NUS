@@ -4,7 +4,12 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.maple.vms.bean.Vote;
 import com.maple.vms.vo.model.VoteModel;
+import com.maple.vms.vo.model.VoteRecordModel;
+import com.maple.vms.vo.model.VoteRecordPageResult;
+import com.maple.vms.vo.model.VoteTrendModel;
 import com.maple.vms.vo.query.VotePageQuery;
+
+import java.util.List;
 
 /**
  * 民主互动服务接口.
@@ -63,5 +68,23 @@ public interface IVmsVoteService extends IService<Vote> {
      * @param id 投票ID
      */
     void endVote(Long id);
+
+    /**
+     * 获取投票记录.
+     *
+     * @param id 投票ID
+     * @return 记录列表
+     */
+    List<VoteRecordModel> getVoteRecords(Long id, Boolean agree, String keyword);
+
+    VoteRecordPageResult getVoteRecordPage(Long id, int current, int size, Boolean agree, String keyword);
+
+    /**
+     * 获取投票趋势.
+     *
+     * @param id 投票ID
+     * @return 趋势数据
+     */
+    List<VoteTrendModel> getVoteTrend(Long id, Integer days, String unit);
 }
 

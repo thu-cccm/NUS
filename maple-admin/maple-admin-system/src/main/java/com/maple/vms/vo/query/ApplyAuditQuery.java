@@ -19,5 +19,8 @@ public class ApplyAuditQuery {
 
     @ApiModelProperty(value = "回复内容")
     private String reply;
+
+    @ApiModelProperty(value = "公示截止时间(时间戳)")
+    private Long publicEndTime;
 }
 

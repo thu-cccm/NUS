@@ -6,6 +6,8 @@
 }
 
 :root {
+	--el-color-primary: #409EFF;
+	--el-color-success: #67C23A;
 	--next-color-white: #ffffff;
 	--next-bg-main-color: #f8f8f8;
 	--next-bg-color: #f5f5ff;
@@ -34,7 +36,7 @@ body,
 	-webkit-font-smoothing: antialiased;
 	-webkit-tap-highlight-color: transparent;
 	background-color: var(--next-bg-main-color);
-	font-size: 14px;
+	font-size: 15px;
 	overflow: hidden;
 	position: relative;
 }
@@ -127,7 +129,7 @@ body,
 	}
 
 	.layout-aside-pc-220 {
-		width: 220px !important;
+		width: 240px !important;
 		transition: width 0.3s ease;
 	}
 	.layout-aside-pc-64 {
@@ -144,12 +146,12 @@ body,
 	.layout-aside-mobile {
 		position: fixed;
 		top: 0;
-		left: -220px;
-		width: 220px;
+		left: -240px;
+		width: 240px;
 		z-index: 9999999;
 	}
 	.layout-aside-mobile-close {
-		left: -220px;
+		left: -240px;
 		transition: all 0.3s cubic-bezier(0.39, 0.58, 0.57, 1);
 	}
 	.layout-aside-mobile-open {

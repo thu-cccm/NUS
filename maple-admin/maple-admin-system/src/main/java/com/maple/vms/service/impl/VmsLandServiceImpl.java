@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -40,6 +41,22 @@ public class VmsLandServiceImpl extends ServiceImpl<LandMapper, Land> implements
                 .eq(Objects.nonNull(status), Land::getStatus, status)
                 .orderByDesc(Land::getId));
         return toModelPage(result, LandModel.class);
+    }
+
+    @Override
+    public List<LandModel> getList(LandPageQuery query) {
+        LandModel model = Objects.isNull(query) ? null : query.getQuery();
+        Long residentId = model == null ? null : model.getResidentId();
+        String landCode = model == null ? null : model.getLandCode();
+        String type = model == null ? null : model.getType();
+        Integer status = model == null ? null : model.getStatus();
+        List<Land> list = landMapper.selectList(Wrappers.lambdaQuery(Land.class)
+                .eq(Objects.nonNull(residentId), Land::getResidentId, residentId)
+                .like(StringUtils.isNotBlank(landCode), Land::getLandCode, landCode)
+                .eq(StringUtils.isNotBlank(type), Land::getType, type)
+                .eq(Objects.nonNull(status), Land::getStatus, status)
+                .orderByDesc(Land::getId));
+        return TransformUtils.mapList(list, LandModel.class);
     }
 
     @Override

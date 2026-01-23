@@ -4,11 +4,11 @@
       <el-form ref="deptDialogFormRef" :model="state.ruleForm" :rules="state.rules" size="default" label-width="90px">
         <el-row :gutter="35">
           <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12" class="mb20">
-            <el-form-item label="父部门" prop="ancestorsArray">
+            <el-form-item label="上级部门" prop="ancestorsArray">
               <el-cascader
                   :options="props.deptOptions"
                   :props="{ checkStrictly: true, value: 'id', label: 'deptName' }"
-                  placeholder="请选择部门"
+                  placeholder="请选择上级部门"
                   filterable
                   clearable
                   class="w100"
@@ -109,9 +109,9 @@ const state = reactive({
     submitTxt: '',
   },
   rules: {
-    ancestorsArray: { required: true, message: '请选择父部门', trigger: 'blur' },
     deptName: { required: true, message: '请输入部门名称', trigger: 'blur' },
-    sortNum: { required: true, message: '请输入显示顺序', trigger: 'blur' },
+    leader: { required: true, message: '请输入负责人', trigger: 'blur' },
+    phone: { required: true, message: '请输入联系电话', trigger: 'blur' },
     status: { required: true, message: '请输入部门状态', trigger: 'blur' },
   },
 });
@@ -157,8 +157,13 @@ const onSubmit = () => {
   ]).then(res => {
     const validateResult = res.every(item => !!item);
     if (validateResult) {
-      state.ruleForm.parentId = state.ruleForm.ancestorsArray[state.ruleForm.ancestorsArray.length - 1]
-      state.ruleForm.ancestors = state.ruleForm.ancestorsArray.join(",");
+      if (state.ruleForm.ancestorsArray && state.ruleForm.ancestorsArray.length > 0) {
+        state.ruleForm.parentId = state.ruleForm.ancestorsArray[state.ruleForm.ancestorsArray.length - 1];
+        state.ruleForm.ancestors = state.ruleForm.ancestorsArray.join(",");
+      } else {
+        state.ruleForm.parentId = 0;
+        state.ruleForm.ancestors = '';
+      }
       if(state.dialog.type == 'add') {
         useDept.createDept(state.ruleForm).then(() => {
           ElMessage.success('创建成功');

@@ -6,21 +6,21 @@ export const useThemeConfig = defineStore('themeConfig', {
 
 			isDrawer: false,
 
-			primary: '#4CAF50',
+			primary: '#409EFF',
 
 			isIsDark: false,
 
 			topBar: '#ffffff',
 
-			topBarColor: '#606266',
+			topBarColor: '#303133',
 
 			isTopBarColorGradual: false,
 
 			menuBar: '#304156',
 
-			menuBarColor: '#eaeaea',
+			menuBarColor: '#eaf2ff',
 
-			menuBarActiveColor: 'rgba(0, 0, 0, 0.2)',
+			menuBarActiveColor: 'rgba(64, 158, 255, 0.25)',
 
 			isMenuBarColorGradual: false,
 
@@ -36,7 +36,7 @@ export const useThemeConfig = defineStore('themeConfig', {
 
 			isUniqueOpened: true,
 
-			isFixedHeader: false,
+			isFixedHeader: true,
 
 			isFixedHeaderChange: false,
 
@@ -54,13 +54,13 @@ export const useThemeConfig = defineStore('themeConfig', {
 
 			isTagsview: true,
 
-			isBreadcrumbIcon: false,
+			isBreadcrumbIcon: true,
 
 			isTagsviewIcon: false,
 
 			isCacheTagsView: false,
 
-			isSortableTagsView: true,
+			isSortableTagsView: false,
 
 			isShareTagsView: false,
 

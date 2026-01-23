@@ -21,21 +21,14 @@
 </template>
 
 <script setup lang="ts" name="layoutBreadcrumbUserNews">
-import { reactive } from 'vue';
+import { onMounted, reactive } from 'vue';
+import { useVmsNoticeApi } from '/@/api/vms/notice';
+import { parseDateTime } from '/@/utils/formatTime';
+
+const noticeApi = useVmsNoticeApi();
 
 const state = reactive({
-	newsList: [
-		{
-			label: '关于版本发布的通知',
-			value: '新农村建设信息管理系统已完成数据初始化，可进行业务演示。',
-			time: '2025-02-20',
-		},
-		{
-			label: '关于学习交流的通知',
-			value: '如需操作指导，请查看系统的部署与使用说明。',
-			time: '2025-02-20',
-		},
-	],
+	newsList: [] as Array<{ label: string; value: string; time: string }>,
 });
 
 const onAllReadClick = () => {
@@ -43,8 +36,28 @@ const onAllReadClick = () => {
 };
 
 const onGoToGiteeClick = () => {
-	window.open('/#/home', '_self');
+	window.open('/#/vms/notice', '_self');
 };
+
+const stripHtml = (value: string) => {
+	if (!value) return '';
+	return value.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+};
+
+const loadNotices = () => {
+	noticeApi.getTop(6).then((res: any) => {
+		const list = res || [];
+		state.newsList = list.map((item: any) => ({
+			label: item.title,
+			value: stripHtml(item.content).slice(0, 60),
+			time: parseDateTime(item.createTime),
+		}));
+	});
+};
+
+onMounted(() => {
+	loadNotices();
+});
 </script>
 
 <style scoped lang="scss">

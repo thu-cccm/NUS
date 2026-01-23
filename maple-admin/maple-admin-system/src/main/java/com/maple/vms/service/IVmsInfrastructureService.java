@@ -6,6 +6,8 @@ import com.maple.vms.bean.Infrastructure;
 import com.maple.vms.vo.model.InfrastructureModel;
 import com.maple.vms.vo.query.InfrastructurePageQuery;
 
+import java.util.List;
+
 /**
  * 基础设施服务接口.
  */
@@ -18,6 +20,14 @@ public interface IVmsInfrastructureService extends IService<Infrastructure> {
      * @return 分页结果
      */
     IPage<InfrastructureModel> getPageList(InfrastructurePageQuery query);
+
+    /**
+     * 获取基础设施列表（不分页，用于导出）.
+     *
+     * @param query 查询条件
+     * @return 基础设施列表
+     */
+    List<InfrastructureModel> getList(InfrastructurePageQuery query);
 
     /**
      * 根据ID获取基础设施信息.

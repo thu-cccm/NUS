@@ -28,6 +28,12 @@ public class Resident implements Serializable {
     @ApiModelProperty(value = "主键")
     private Long id;
 
+    @ApiModelProperty(value = "户号(同一户号表示同一家庭)")
+    private String familyId;
+
+    @ApiModelProperty(value = "是否户主(0否,1是)")
+    private Integer isHouseholder;
+
     @ApiModelProperty(value = "真实姓名")
     private String realName;
 
@@ -54,6 +60,18 @@ public class Resident implements Serializable {
 
     @ApiModelProperty(value = "健康状况")
     private String healthStatus;
+
+    @ApiModelProperty(value = "特殊人群标记(JSON数组)")
+    private String tags;
+
+    @ApiModelProperty(value = "迁移状态(在村/迁入/迁出)")
+    private String migrateStatus;
+
+    @ApiModelProperty(value = "迁出地")
+    private String migrateTo;
+
+    @ApiModelProperty(value = "迁出/迁入时间")
+    private Date migrateTime;
 
     @ApiModelProperty(value = "创建时间")
     @TableField(fill = FieldFill.INSERT)
